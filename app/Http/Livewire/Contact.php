@@ -22,18 +22,18 @@ class Contact extends Component
     public function sendEmail()
     {
         $this->validate([
-        'sender' => 'required',
-        'email' => 'required|email',
-        'subject' => 'required',
-        'message'=>'required',
-     ]);
+            'sender' => 'required',
+            'email' => 'required|email',
+            'subject' => 'required',
+            'message' => 'required',
+        ]);
 
-        Mail::to(env('SF_INFO_MAIL'))->send(new ContactForm(['sender' => $this->sender ,'email' => $this->email,'subject' => $this->subject,'message' => $this->message]));
+        Mail::to(env('SF_INFO_MAIL'))->send(new ContactForm(['sender' => $this->sender, 'email' => $this->email, 'subject' => $this->subject, 'message' => $this->message]));
         return $this->flash('success', 'Mesajınız Başarıyla Gönderildi.', [
-        'position' => 'top-end',
-        'timeout' => 3000,
-        'toast' => true,
-        'timerProgressBar' => true,
-      ]);
+            'position' => 'top-end',
+            'timeout' => 3000,
+            'toast' => true,
+            'timerProgressBar' => true,
+        ]);
     }
 }
