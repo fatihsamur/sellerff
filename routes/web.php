@@ -35,8 +35,11 @@ Wave::routes();
 // home page components routes
 Route::view('saas-index', 'saas-index')->name('saas-index');
 
+// landing pages routes -> @ wave router 
 
-Route::group(['middleware' => ['auth','admin']], function () {
+
+
+Route::group(['middleware' => ['auth', 'admin']], function () {
     Route::get('admin-sellerfullfilment', [AdminController::class, 'index'])->name('admin.index');
     Route::get('admin-sellerfullfilment/deposit_user', [AdminController::class, 'deposit_user'])->name('admin.deposit_user');
     Route::get('admin-sellerfullfilment/reports', [AdminController::class, 'reports'])->name('admin.reports');
@@ -46,7 +49,7 @@ Route::group(['middleware' => ['auth','admin']], function () {
     Route::get('admin-sellerfullfilment/deposit_requests', [AdminController::class, 'deposit_requests_index'])->name('admin.deposit_requests');
 });
 
-Route::group(['middleware' => ['auth','roles'], 'roles' => ['employee', 'admin']], function () {
+Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['employee', 'admin']], function () {
     Route::get('warehouse-management-sellerfullfilment', [WarehouseController::class, 'index'])->name('warehouse.index');
     Route::get('warehouse-sellerfullfilment/order_process', [WarehouseController::class, 'order_process'])->name('warehouse.order_process');
     Route::get('warehouse-sellerfullfilment/order_process/{order_id}/status_change', [WarehouseController::class, 'status_change'])->name('warehouse.order_process.status_change');
@@ -63,7 +66,7 @@ Route::group(['middleware' => ['auth','roles'], 'roles' => ['employee', 'admin']
 });
 
 
-Route::group(['middleware' => ['auth','roles'], 'roles' => ['prime','basic','admin']], function () {
+Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['prime', 'basic', 'admin']], function () {
     Route::get('/{id}/cancel-subscription', [UserController::class, 'cancel_subscription'])->name('user.cancel-subscription');
     Route::get('/fba', [FbaController::class, 'index'])->name('fba');
     Route::get('/fba/order/{id}', [FbaController::class, 'show'])->name('fba.show');

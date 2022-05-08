@@ -27,14 +27,13 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-
     }
 
     private function setSchemaDefaultLength(): void
     {
         try {
             Schema::defaultStringLength(191);
+        } catch (\Exception $exception) {
         }
-        catch (\Exception $exception){}
     }
 }
