@@ -1,0 +1,263 @@
+
+
+
+/*===========================
+    16.APPIE CONTACT css 
+===========================*/
+
+
+
+.contact-section{
+    position: relative;
+    background: #f7f6fa;
+    padding: 120px 0;
+}
+.contact--info-area{
+    position: relative;
+    margin-right: 40px;
+}
+.contact--info-area h3{
+    font-size: 30px;
+    color: #2c234d;
+    font-weight: 800;
+    line-height: .8;
+    margin-bottom: 16px;
+}
+.contact--info-area > p{
+    color: #686875;
+    line-height: 24px;
+    border-bottom: 1px solid #e5e4ed;
+    margin-bottom: 33px;
+    padding-bottom: 25px;
+}
+.single-info{
+    position: relative;
+    margin-bottom: 37px;
+}
+.single-info h5{
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 600;
+    margin-bottom: 15px;
+    color: #2c234d;
+}
+.single-info p{
+    position: relative;
+    font-size: 14px;
+    line-height: 22px;
+    color: #686875;
+    margin: 0;
+    padding-left: 32px;
+}
+.single-info p i{
+    font-size: 16px;
+    line-height: 22px;
+    color: $theme-color;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.ab-social h5{
+    font-size: 16px;
+    line-height: 26px;
+    font-weight: 600;
+    margin-bottom: 24px;
+    color: #2c234d;
+}
+.bisylms-map {
+    position: relative;
+    line-height: .8;
+    overflow: hidden;
+}
+.bisylms-map iframe {
+    width: 100%;
+    height: 480px;
+    border: none;
+}
+.contact-form{
+    position: relative;
+    background: #fff;
+    border-radius: 10px;
+    padding: 43px 50px 65px;
+    -webkit-box-shadow: 0px 1px 3px 0px rgba(11, 02, 55, 0.06);
+    -moz-box-shadow: 0px 1px 3px 0px rgba(11, 02, 55, 0.06);
+    box-shadow: 0px 1px 3px 0px rgba(11, 02, 55, 0.06);
+}
+.contact-form h4{
+    font-size: 24px;
+    color: #2c234d;
+    line-height: 30px;
+    margin-bottom: 8px;
+}
+.contact-form p{
+    font-size: 16px;
+    color: #686875;
+    line-height: 26px;
+    position: relative;
+    z-index: 3;
+    margin: 0 0 41px;
+}
+.contact-form input[type="text"],
+.contact-form input[type="number"],
+.contact-form textarea,
+.contact-form input[type="email"] {
+    width: 100%;
+    height: 56px;
+    font-size: 14px;
+    line-height: 56px;
+    font-weight: 400;
+    border-radius: 3px;
+    border: none;
+    background: #f5f5f7;
+    color: #7e7c87;
+    outline: none;
+    border: 1px solid transparent;
+    padding: 0 30px;
+    margin-bottom: 20px;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.contact-form textarea{
+    height: 220px;
+    resize: none;
+    line-height: 30px;
+    padding-top: 14px;
+}
+.contact-form textarea::-moz-placeholder,
+.contact-form input[type="text"]::-moz-placeholder,
+.contact-form input[type="number"]::-moz-placeholder,
+.contact-form input[type="email"]::-moz-placeholder{
+   color: #7e7c87;
+   opacity: 1; 
+}
+.contact-form textarea::-ms-input-placeholder,
+.contact-form input[type="text"]::-ms-input-placeholder,
+.contact-form input[type="number"]::-ms-input-placeholder,
+.contact-form input[type="email"]::-ms-input-placeholder{
+   color: #7e7c87;
+   opacity: 1; 
+}
+.contact-form textarea::-webkit-input-placeholder,
+.contact-form input[type="text"]::-webkit-input-placeholder,
+.contact-form input[type="number"]::-webkit-input-placeholder,
+.contact-form input[type="email"]::-webkit-input-placeholder{
+   color: #7e7c87;
+   opacity: 1; 
+}
+.contact-form textarea:focus,
+.contact-form input[type="text"]:focus,
+.contact-form input[type="number"]:focus,
+.contact-form input[type="email"]:focus{
+    background: transparent;
+    border-color: #ece9f9;
+    -webkit-box-shadow: 0px 14px 16px 0px rgba(11, 02, 55, 0.10);
+    -moz-box-shadow: 0px 14px 16px 0px rgba(11, 02, 55, 0.10);
+    box-shadow: 0px 14px 16px 0px rgba(11, 02, 55, 0.10);
+}
+.contact-form input[type="submit"]{
+    height: 50px;
+    border-radius: 3px;
+    background: $theme-color;
+    color: #fff;
+    text-align: center;
+    border: none;
+    outline: none;
+    padding: 0 36px;
+    font-size: 13px;
+    line-height: 50px;
+    font-weight: 600;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.contact-form input[type="submit"]:hover{
+    -webkit-box-shadow: 0px 20px 30px 0px rgba(26, 8, 119, 0.24);
+    -moz-box-shadow:    0px 20px 30px 0px rgba(26, 8, 119, 0.24);
+    box-shadow:         0px 20px 30px 0px rgba(26, 8, 119, 0.24);
+}
+.condition-check{
+    position: relative;
+    margin: 10px 0 0;
+}
+.condition-check input[type="checkbox"] {
+    display: none;
+}
+.condition-check label {
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 0;
+    font-weight: 400;
+    padding-left: 31px;
+    position: relative;
+    cursor: pointer;
+    color: #686875;
+    margin: 0 0 0;
+}
+.condition-check label a{
+    color: $theme-color;
+}
+.condition-check label a:hover{
+    color: #686875;
+}
+.condition-check label:before {
+    background: transparent;
+    content: "";
+    height: 16px;
+    left: 0;
+    position: absolute;
+    border-radius: 3px;
+    top: 3px;
+    width: 16px;
+    border: 2px solid #ababb1;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+.condition-check input:checked + label::after {
+    background: transparent;
+    bottom: 0;
+    font-family: 'Font Awesome 5 Pro';
+    content: "\f00c";
+    color: $theme-color;
+    font-size: 10px;
+    left: 3px;
+    position: absolute;
+    top: -1px;
+    -webkit-transition: all 0.3s ease;
+    -o-transition: all 0.3s ease;
+    transition: all 0.3s ease;
+}
+
+.ab-social{
+    position: relative;
+}
+.ab-social a{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    background: #446bb9;
+    color: #fff;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 42px;
+    font-size: 14px;
+    margin-right: 2px;
+}
+.ab-social a.fac{
+    background: #446bb9;
+}
+.ab-social a.twi{
+    background: #00aced;
+}
+.ab-social a.you{
+    background: #f73434;
+}
+.ab-social a.lin{
+    background: #007bb6;
+}
+.ab-social a:hover{
+    -webkit-box-shadow: 0px 10px 20px 0px rgba(9, 111, 150, 0.30);
+    -moz-box-shadow:    0px 10px 20px 0px rgba(9, 111, 150, 0.30);
+    box-shadow:         0px 10px 20px 0px rgba(9, 111, 150, 0.30);
+}

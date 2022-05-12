@@ -11,26 +11,37 @@
                         {{-- @customer --}}
                         @notemployee
                         <li>
-                            <a href="{{ url('/dashboard') }}" class="top-menu @if (Request::is('dashboard'))top-menu--active @endif">
+                            <a href="{{ url('/') }}"
+                                class="top-menu @if (Request::is('/')) top-menu--active @endif">
                                 <div class="top-menu__icon"> <i data-feather="home"></i> </div>
+                                <div class="top-menu__title">Anasayfa</div>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ url('/dashboard') }}"
+                                class="top-menu @if (Request::is('dashboard')) top-menu--active @endif">
+                                <div class="top-menu__icon"> <i data-feather="columns"></i> </div>
                                 <div class="top-menu__title">Panelim</div>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/orders') }}" class="top-menu @if (Request::is('orders'))top-menu--active @endif">
+                            <a href="{{ url('/orders') }}"
+                                class="top-menu @if (Request::is('orders')) top-menu--active @endif">
                                 <div class="top-menu__icon"> <i data-feather="package"></i> </div>
                                 <div class="top-menu__title">Gönderilerim</div>
                             </a>
                         </li>
                         <li>
-                            <a href="{{ url('/other-services') }}" class="top-menu @if (Request::is('other-services'))top-menu--active @endif">
+                            <a href="{{ url('/other-services') }}"
+                                class="top-menu @if (Request::is('other-services')) top-menu--active @endif">
                                 <div class="top-menu__icon"> <i data-feather="box"></i> </div>
                                 <div class="top-menu__title">Ek Hizmetler</div>
                             </a>
                         </li>
                         <li>
 
-                            <a href="{{ url('/fba') }}" class="top-menu @if (Request::is('fba', 'fba/*'))top-menu--active @endif">
+                            <a href="{{ url('/fba') }}"
+                                class="top-menu @if (Request::is('fba', 'fba/*')) top-menu--active @endif">
                                 <div class="top-menu__icon"> <span class="iconify" data-icon="whh:amazon"></span>
                                 </div>
                                 <div class="top-menu__title">FBA</div>
@@ -38,7 +49,8 @@
 
                         </li>
                         <li>
-                        <a href="{{ url('/dropshipping') }}" class="top-menu @if (Request::is('dropshipping', 'dropshipping/*'))top-menu--active @endif">
+                            <a href="{{ url('/dropshipping') }}"
+                                class="top-menu @if (Request::is('dropshipping', 'dropshipping/*')) top-menu--active @endif">
                                 <div class="top-menu__icon"> <span class="iconify" data-icon="whh:amazon"></span>
                                 </div>
                                 <div class="top-menu__title">Dropshipping</div>
@@ -50,7 +62,8 @@
                         @admin
 
                         <li>
-                            <a href="{{ url('/admin-sellerfullfilment') }}" class="top-menu @if (Request::is('admin-sellerfullfilment', 'admin-sellerfullfilment/*'))top-menu--active @endif">
+                            <a href="{{ url('/admin-sellerfullfilment') }}"
+                                class="top-menu @if (Request::is('admin-sellerfullfilment', 'admin-sellerfullfilment/*')) top-menu--active @endif">
                                 <div class="top-menu__icon"> <span class="iconify"
                                         data-icon="dashicons:admin-settings"></span>
 
@@ -114,7 +127,6 @@
                     </ul>
                 </nav>
                 <!-- END: Top Menu -->
-
             @endif
         </div>
         <!-- END: Top Bar -->

@@ -1,0 +1,838 @@
+
+
+
+/*===========================
+    3.APPIE HERO css 
+===========================*/
+
+.appie-hero-area{
+	padding-top: 200px;
+	padding-bottom: 110px;
+	overflow: hidden;
+	position: relative;
+	z-index: 10;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	&.appie-hero-3-area{
+		background-image: url(../images/hero-bg.jpg);
+		background-size: cover;
+		background-position: center;
+		background-repeat: no-repeat;
+		padding-top: 180px;
+		padding-bottom: 0px;
+		overflow: visible;
+		z-index: 15;
+		& .appie-hero-content{
+			& .appie-title{
+				color: $white;
+				font-size: 70px;
+				line-height: 80px;
+				padding: 0 80px;
+				@media #{$lg} {
+					font-size: 54px;
+					line-height: 64px;
+				}
+				@media #{$md} {
+					font-size: 50px;
+					line-height: 60px;
+				}
+				@media #{$xs} {
+					font-size: 36px;
+					line-height: 46px;
+					padding: 0;
+				}
+				@media #{$sm} {
+					font-size: 46px;
+					line-height: 56px;
+					padding: 0;
+				}
+			}
+			& p{
+				color: $white;
+				opacity: 0.5;
+				font-size: 18px;
+				line-height: 28px;
+			}
+			& .hero-btns{
+				margin-top: 35px;
+				& .main-btn{
+					border-color: $theme-color-3;
+					color: $theme-color-3;
+					background: transparent;
+					margin-right: 14px;
+				}
+				& .appie-video-popup{
+					color: $white;
+					font-size: 15px;
+					font-weight: 500;
+					@media #{$xs} {
+						margin-top: 20px;
+					}
+					& i{
+						height: 45px;
+						width: 45px;
+						text-align: center;
+						line-height: 42px;
+						border-radius: 50%;
+						border: 2px solid #fff;
+						color: $white;
+						margin-right: 10px;
+					}
+				}
+			}
+			& .thumb{
+				margin-bottom: -210px;
+				@media #{$xs} {
+					display: none;
+					margin-bottom: 0;
+				}
+				@media #{$sm} {
+					display: block;
+					margin-bottom: -210px;
+				}
+			}
+		}
+		&.appie-hero-5-area{
+			background-color: $grey;
+			background-image: url(../images/hero-bg-2.png);
+			padding-top: 280px;
+			@media #{$lg} {
+				padding-top: 120px;
+			}
+			@media #{$md} {
+				padding-top: 160px;
+			}
+			@media #{$xs} {
+				padding-top: 120px;
+				padding-bottom: 100px;
+			}
+			@media #{$sm} {
+				padding-top: 120px;
+				padding-bottom: 0px;
+			}
+			& .appie-hero-content{
+				& .thumb{
+					margin-bottom: -110px;
+				}
+				& .appie-title{
+					font-weight: 700;
+					font-size: 70px;
+					line-height: 80px;
+					@media #{$lg} {
+						font-size: 50px;
+						line-height: 60px;
+					}
+					@media #{$md} {
+						font-size: 40px;
+						line-height: 50px;
+					}
+					@media #{$xs} {
+						font-size: 30px;
+						line-height: 40px;
+					}
+					@media #{$sm} {
+						font-size: 36px;
+						line-height: 46px;
+					}
+				}
+				& .hero-btns{
+					& .appie-video-popup{
+						& i{
+							border-color: rgba(255,255,255,0.2);
+						}
+					}
+					& .main-btn{
+						border-color: rgba(255,255,255,0.2);
+						color: $white;
+						&:hover{
+							background: $theme-color-5;
+							color: $white;
+						}
+					}
+				}
+			}
+		}
+	}
+	& .hero-shape-1{
+		position: absolute;
+		left: 0;
+		top: 250px;
+		z-index: -1;
+		animation: linear 20s animationFramesOne infinite;
+	}
+	& .hero-shape-2{
+		position: absolute;
+		left: 80px;
+		z-index: -1;
+		top: 480px;
+		animation: linear 25s animationFramesThree infinite;
+	}
+	& .hero-shape-3{
+		position: absolute;
+		bottom: 120px;
+		right: 320px;
+		z-index: -1;
+		animation: linear 25s animationFramesFive infinite;
+	}
+	&.appie-hero-4-area{
+		background: #f9f9f9;
+		background-image: url(../images/hero-shape-1.png);
+		background-repeat: no-repeat;
+		background-size: auto;
+		background-position: 6% 100%;
+		padding-top: 140px;
+		padding-bottom: 60px;
+	}
+	&.appie-hero-6-area{
+		background-image: url(../images/hero-bg-3.jpg);
+	}
+	&.appie-hero-7-area{
+		background-image: url(../images/hero-bg-4.png);
+	}
+	&.appie-hero-8-area{
+		position: relative;
+		z-index: 10;
+		& .home-8-shape-1{
+			position: absolute;
+			left: 0;
+			bottom: 100px;
+			z-index: -1;
+		}
+		& .home-8-shape-2{
+			position: absolute;
+			top: 0;
+			right: 0;
+			z-index: -1;
+		}
+		& .home-8-shape-3{
+			position: absolute;
+			top: 400px;
+			right: 290px;
+			z-index: -1;
+		}
+		& .home-8-shape-4{
+			position: absolute;
+			bottom: 195px;
+			left: 195px;
+			z-index: -1;
+		}
+		& .appie-hero-content-8{
+			& .appie-title{
+				font-size: 70px;
+				line-height: 80px;
+				font-weight: 700;
+				background: linear-gradient(90deg, rgba(251,45,78,1) 25%, rgba(78,136,255,1) 75%);
+				-webkit-text-fill-color: transparent;
+				-webkit-background-clip: text;
+				@media #{$lg} {
+					font-size: 56px;
+					line-height: 66px;
+				}
+				@media #{$md} {
+					font-size: 42px;
+					line-height: 66px;
+				}
+				@media #{$xs} {
+					font-size: 32px;
+					line-height: 44px;
+				}
+			}
+		}
+	}
+}
+
+
+.appie-hero-thumb-6{
+	& .thumb{
+		position: relative;
+		z-index: 10;
+		& .back-image{
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			width: 100%;
+			z-index: -1;
+		}
+	}
+}
+
+
+
+
+
+
+.appie-hero-content{
+	@media #{$md} {
+		margin-bottom: 50px;
+		text-align: center;
+	}
+	@media #{$xs} {
+		margin-bottom: 50px;
+		text-align: center;
+	}
+	& > span{
+		color: $theme-color;
+		font-size: 14px;
+		font-weight: 500;
+	}
+	& .appie-title{
+		font-size: 60px;
+		line-height: 70px;
+		margin-top: 10px;
+		margin-bottom: 22px;
+		@media #{$lg} {
+			font-size: 48px;
+			line-height: 58px;
+		}
+		@media #{$md} {
+			font-size: 48px;
+			line-height: 58px;
+		}
+		@media #{$xs} {
+			font-size: 28px;
+			line-height: 38px;
+		}
+		@media #{$sm} {
+			font-size: 36px;
+			line-height: 46px;
+		}
+	}
+	& p{
+		font-size: 18px;
+		line-height: 28px;
+		@media #{$xs} {
+			font-size: 15px;
+			line-height: 26px;
+		}
+	}
+	& ul{
+		margin: 41px 0 0;
+		padding: 0;
+		list-style-type: none;
+		& li{
+			display: inline-block;
+			margin-right: 8px;
+			@media #{$xs} {
+				margin-bottom: 20px;
+			}
+			@media #{$sm} {
+				margin-bottom: 0px;
+			}
+			& a{
+				background: $heading-color;
+				color: $white;
+				line-height: 40px;
+				padding: 0 23px;
+				border-radius: 6px;
+				border: 2px solid $heading-color;
+				& i{
+					padding-right: 6px;
+				}
+				&:hover{
+					background: transparent;
+					color: $heading-color;
+				}
+				&.item-2{
+					background: transparent;
+					color: $heading-color;
+					&:hover{
+						background: $heading-color;
+						color: $white;
+					}
+				}
+			}
+		}
+	}
+	&.appie-hero-content-4{
+		padding-right: 40px;
+		@media #{$lg} {
+			padding-right: 0;
+		}
+		@media #{$xs} {
+			padding-right: 0;
+		}
+		& > span{
+			color: $theme-color-4;
+		}
+		& .appie-title{
+			font-size: 70px;
+			font-weight: 700;
+			line-height: 80px;
+			@media #{$lg} {
+				font-size: 60px;
+				line-height: 70px;
+			}
+			@media #{$md} {
+				font-size: 50px;
+				line-height: 60px;
+			}
+			@media #{$xs} {
+				font-size: 30px;
+				line-height: 40px;
+			}
+			@media #{$sm} {
+				font-size: 40px;
+				line-height: 50px;
+			}
+		}
+		& a{
+			&.main-btn{
+				border: 2px solid $theme-color-4;
+				color: $theme-color-4;
+				background: $white;
+				line-height: 55px;
+				padding: 0 40px;
+				font-size: 16px;
+				margin-top: 40px;
+				&:hover{
+					background: $theme-color-4;
+					color: $white;
+				}
+			}
+		}
+	}
+
+	&.appie-hero-content-6{
+		& > span{
+			color: $theme-color-6;
+		}
+		& .appie-title{
+			font-weight: 700;
+			font-size: 70px;
+			line-height: 80px;
+			@media #{$lg} {
+				font-size: 60px;
+				line-height: 70px;
+			}
+			@media #{$md} {
+				font-size: 50px;
+				line-height: 60px;
+			}
+			@media #{$xs} {
+				font-size: 36px;
+				line-height: 46px;
+			}
+		}
+		& ul{
+			& li{
+				& a{
+					background: $theme-color-6;
+					border-color: $theme-color-6;
+					display: flex;
+					align-items: center;
+					font-size: 13px;
+					font-weight: 400;
+					padding-top: 10px;
+					padding-bottom: 10px;
+					& span{
+						line-height: 20px;
+						& span{
+							font-size: 16px;
+							font-weight: 700;
+							display: block;
+							line-height: 20px;
+						}
+					}
+					& i{
+						font-size: 30px; 
+					}
+					&:hover{
+						background: $white;
+						color: $heading-color;
+						border-color: $white;
+					}
+					&.item-2{
+						background: $white;
+						border-color: $white;
+						&:hover{
+							background: $theme-color-6;
+							border-color: $theme-color-6;
+							color: $white;
+						}
+					}
+				}
+			}
+		}
+		&.appie-hero-content-7{
+			& .appie-title{
+				color: $white;
+			}
+			& p{
+				color: $white;
+				opacity: 0.5;
+			}
+			& ul{
+				& li{
+					& a{
+						background: $white;
+						color: $heading-color;
+						border-color: $white;
+						&:hover{
+							background: transparent;
+							border-color: #54386a;
+							color: $white;
+						}
+						&.item-2{
+							background: transparent;
+							color: $white;
+							border-color: #54386a;
+							&:hover{
+								border-color: $white;
+								background: $white;
+								color: $heading-color;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+.appie-hero-thumb{
+	position: relative;
+	z-index: 10;
+	text-align: center;
+	& .thumb{
+	}
+	& .thumb-2{
+		position: absolute;
+		right: -30px;
+		top: 50%;
+		transform: translateY(-50%);
+		box-shadow: 0px 30px 70px 0px rgba(68, 1, 15, 0.2);
+	}
+	&::before{
+		position: absolute;
+		content: '';
+		left: 50%;
+		top: 50%;
+		height: 500px;
+		width: 500px;
+		transform: translate(-50%, -50%);
+		background: #ff3e66;
+		border-radius: 50%;
+		z-index: -1;
+	}
+	&.appie-hero-thumb-4{
+		&::before{
+			height: 160px;
+			width: 160px;
+			top: 200px;
+			left: 70px;
+			background: #801f82;
+			transform: translate(0%, 0%);
+		}
+		& .hero-dot{
+			position: absolute;
+			right: 70px;
+			bottom: 115px;
+			z-index: -1;
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.appie-hero-area-2{
+	padding-top: 290px;
+	padding-bottom: 170px;
+	background: $grey;
+	position: relative;
+	overflow: hidden;
+	z-index: 10;
+	@media #{$lg} {
+		padding-top: 190px;
+		padding-bottom: 120px;
+	}
+	@media #{$md} {
+		padding-top: 190px;
+		padding-bottom: 120px;
+	}
+	@media #{$xs} {
+		padding-top: 190px;
+		padding-bottom: 150px;
+	}
+	& .appie-hero-thumb-3{
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		width: 48%;
+		@media #{$laptop} {
+			width: 60%;
+		}
+		@media #{$md} {
+			width: 40%;
+		}
+		@media #{$xs} {
+			width: 36%;
+		}
+	}
+	& .hero-shape-1{
+		position: absolute;
+		top: 250px;
+		left: 130px;
+		animation: linear 20s animationFramesOne infinite;
+		z-index: -1;
+	}
+	& .hero-shape-2{
+		position: absolute;
+		bottom: 290px;
+		left: 40px;
+		animation: linear 20s animationFramesFour infinite;
+		z-index: -1;
+	}
+	& .hero-shape-3{
+		position: absolute;
+		top: 480px;
+		right: 240px;
+		animation: linear 20s animationFramesFive infinite;
+		z-index: -1;
+	}
+	& .hero-shape-4{
+		position: absolute;
+		top: 210px;
+		right: 0px;
+		animation: linear 20s animationFramesThree infinite;
+		z-index: -1;
+	}
+}
+
+
+.appie-hero-content-2{
+	& > span{
+		font-size: 16px;
+		font-weight: 500;
+		color: $theme-color-2;
+		position: relative;
+		&::before{
+			position: absolute;
+			content: '';
+			left: 50%;
+			top: 40%;
+			transform: translate(-50% , -50%);
+			width: 130px;
+			height: 70px;
+			background-image: url(../images/hero-line.png);
+			background-size: cover;
+			background-position: center;
+			background-repeat: no-repeat;
+		}
+	}
+	& .appie-title{
+		font-size: 64px;
+		line-height: 70px;
+		font-weight: 400;
+		margin-top: 15px;
+		@media #{$lg} {
+			font-size: 50px;
+			line-height: 50px;
+		}
+		@media #{$md} {
+			font-size: 50px;
+			line-height: 60px;
+		}
+		@media #{$xs} {
+			font-size: 30px;
+			line-height: 40px;
+		}
+		@media #{$sm} {
+			font-size: 40px;
+			line-height: 50px;
+		}
+		& span{
+			font-weight: 900;
+		}
+	}
+	& p{
+		font-size: 18px;
+		color: $heading-color;
+		margin-top: 22px;
+	}
+	& .input-box{
+		position: relative;
+		margin-top: 40px;
+		width: 400px;
+		@media #{$xs} {
+			width: 100%;
+		}
+		& > i{
+			position: absolute;
+			left: 25px;
+			top: 50%;
+			transform: translateY(-50%);
+			color: #c3c3cc;
+		}
+		& input{
+			width: 100%;
+			height: 60px;
+			border-radius: 40px;
+			border: 0;
+			border-left: 3px solid $theme-color-2;
+			padding-left: 55px;
+			box-shadow: -3px 0px 0px 0px rgba(255, 62, 102, 0.004),0px 30px 30px 0px rgba(14, 17, 51, 0.1);
+		}
+		& button{
+			position: absolute;
+			right: 0;
+			top: 50%;
+			transform: translateY(-50%);
+			height: 50px;
+			width: 50px;
+			text-align: center;
+			line-height: 50px;
+			background: #fff;
+			border-radius: 50%;
+			border: 0;
+			color: $theme-color-2;
+		}
+	}
+	& .hero-users{
+		display: flex;
+		align-items: center;
+		margin-top: 40px;
+		&  > span{
+			margin-left: 20px;
+			font-size: 26px;
+			font-weight: 900;
+			color: $heading-color;
+			width: 60px;
+			display: inline-block;
+			line-height: 16px;
+			& span{
+				font-size: 13px;
+				font-weight: 500;
+				color: $text-color;
+				display: inline-block;
+				line-height: 13px;
+			}
+		}
+	}
+}
+
+
+
+
+
+
+.appie-page-title-area{
+	height: 450px;
+	background-image: url(../images/page-bg.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	display: flex;
+	align-items: center;
+	&.appie-page-service-title-area{
+		height: 650px;
+		background-image: url(../images/page-title-bg.jpg);
+		@media #{$md} {
+			height: 500px;
+		}
+		@media #{$xs} {
+			height: 400px;
+		}
+		& .appie-page-title-item{
+			& .thumb{
+				right: 110px;
+				width: auto;
+				@media #{$lg} {
+					right: 0;
+				}
+				@media #{$md} {
+					display: none;
+				}
+				@media #{$xs} {
+					display: none;
+				}
+			}
+		}
+
+	}
+}
+
+
+
+.appie-page-title-item{
+	margin-top: 80px;
+	position: relative;
+	& .thumb{
+		position: absolute;
+		right: 0;
+		bottom: -100px;
+		width: 160px;
+		@media #{$xs} {
+			display: none;
+		}
+		@media #{$sm} {
+			display: block;
+		}
+	}
+	& span{
+		color: $white;
+		font-weight: 500;
+		opacity: 0.7;
+		padding-bottom: 14px;
+	}
+	& .title{
+		color: $white;
+		font-size: 44px;
+		font-weight: 700;
+		@media #{$xs} {
+			font-size: 26px;
+		}
+		@media #{$sm} {
+			font-size: 32px;
+		}
+	}
+	& nav{
+		display: inline-block;
+		margin-top: 20px;
+		& ol{
+			background: transparent;
+			padding: 0;
+			& li{
+				& a{
+					color: $white;
+					opacity: 0.8;
+				}
+				&.active{
+					color: $white;
+					opacity: 0.8;
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+

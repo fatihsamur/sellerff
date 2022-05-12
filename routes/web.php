@@ -35,8 +35,14 @@ Wave::routes();
 // home page components routes
 Route::view('saas-index', 'saas-index')->name('saas-index');
 
-// landing pages routes -> @ wave router 
-
+// landing pages routes -> @ wave router
+Route::get('/', '\Wave\Http\Controllers\HomeController@index')->name('wave.home');
+Route::get('/contact-us', '\Wave\Http\Controllers\HomeController@contactUs')->name('wave.contact');
+Route::get('/about', '\Wave\Http\Controllers\HomeController@about')->name('wave.about');
+Route::get('/pricing', '\Wave\Http\Controllers\HomeController@pricing')->name('wave.pricing');
+Route::get('/privacy-policy', '\Wave\Http\Controllers\HomeController@landingPrivacyPolicy')->name('wave.privacy-policy');
+Route::get('/terms-and-conditions', '\Wave\Http\Controllers\HomeController@landingTermsOfServices')->name('wave.terms-of-services');
+Route::get('/faq', '\Wave\Http\Controllers\HomeController@faq')->name('wave.faq');
 
 
 Route::group(['middleware' => ['auth', 'admin']], function () {
@@ -64,6 +70,8 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['employee', 'admin'
     Route::get('warehouse-sellerfullfilment/box_settings', [WarehouseController::class, 'box_settings'])->name('warehouse.box_settings');
     Route::get('warehouse-sellerfullfilment/order/{id}/cancel', [WarehouseController::class, 'cancel'])->name('warehouse.cancel');
 });
+
+
 
 
 Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['prime', 'basic', 'admin']], function () {

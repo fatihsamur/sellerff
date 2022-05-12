@@ -14,6 +14,7 @@ class Contact extends Component
     public $email;
     public $subject;
     public $message;
+    public $agree;
     public function render()
     {
         return view('livewire.contact');
@@ -26,6 +27,7 @@ class Contact extends Component
             'email' => 'required|email',
             'subject' => 'required',
             'message' => 'required',
+            'agree' => 'required',
         ]);
 
         Mail::to(env('SF_INFO_MAIL'))->send(new ContactForm(['sender' => $this->sender, 'email' => $this->email, 'subject' => $this->subject, 'message' => $this->message]));

@@ -1,0 +1,98 @@
+
+
+
+/*===========================
+    15.APPIE SHOWCASE css 
+===========================*/
+
+
+
+
+
+.appie-showcase-area{
+	background: $grey;
+	padding-top: 90px;
+	padding-bottom: 120px;
+	position: relative;
+	overflow: hidden;
+	z-index: 10;
+	& .showcase-shape-1{
+		position: absolute;
+		left: 90px;
+		top: 185px;
+		z-index: -1;
+		animation: linear 25s animationFramesFive infinite;
+	}
+	& .showcase-shape-2{
+		position: absolute;
+		left: 170px;
+		bottom: 95px;
+		z-index: -1;
+		animation: linear 20s animationFramesOne infinite;
+	}
+	& .showcase-shape-3{
+		position: absolute;
+		top: 200px;
+		right: 0;
+		z-index: -1;
+		animation: linear 25s animationFramesThree infinite;
+	}
+	& .showcase-shape-4{
+		position: absolute;
+		bottom: 250px;
+		right: 195px;
+		z-index: -1;
+		animation: linear 25s animationFramesFour infinite;
+	}
+}
+
+
+.appie-showcase-item{
+	box-shadow: 0px 2px 3px 0px rgba(14, 17, 51, 0.1);
+	border-radius: 10px;
+	overflow: hidden;
+	@include transition(0.3s);
+	margin-top: 30px;
+	margin-bottom: 50px;
+	&:hover{
+		box-shadow: 0px 40px 40px 0px rgba(14, 17, 51, 0.1);
+		transform: translateY(-10px);
+	}
+	& a{
+		display: block;
+	}
+	& img{
+		width: 100%;
+	}
+}
+
+
+
+.appie-showcase-slider{
+	& .slick-list{
+	}
+	& .slick-dots{
+		position: absolute;
+		left: 50%;
+		bottom: -20px;
+		transform: translateX(-50%);
+		& li{
+			display: inline-block;
+			& button{
+				font-size: 0;
+				border: 0;
+				background: #ccced9;
+				height: 10px;
+				width: 10px;
+				border-radius: 50%;
+				margin: 0 3px;
+			}
+			&.slick-active{
+				 & button{
+				 	background: $theme-color-3;
+				 }
+			}
+		}
+	}
+}
+

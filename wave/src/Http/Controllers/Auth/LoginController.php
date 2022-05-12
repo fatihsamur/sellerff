@@ -38,8 +38,9 @@ class LoginController extends \App\Http\Controllers\Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function username(){
-        if(setting('auth.email_or_username')){
+    public function username()
+    {
+        if (setting('auth.email_or_username')) {
             return setting('auth.email_or_username');
         }
 
@@ -53,7 +54,7 @@ class LoginController extends \App\Http\Controllers\Controller
 
     protected function authenticated(Request $request, $user)
     {
-        if(setting('auth.verify_email') && !$user->verified){
+        if (setting('auth.verify_email') && !$user->verified) {
             $this->guard()->logout();
             return redirect()->back()->with(['message' => 'Please verify your email before logging into your account.', 'message_type' => 'warning']);
         }
@@ -76,7 +77,8 @@ class LoginController extends \App\Http\Controllers\Controller
     }
 
 
-    public function logout(){
+    public function logout()
+    {
         \Auth::logout();
         return redirect(route('wave.home'));
     }

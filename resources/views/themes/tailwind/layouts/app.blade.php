@@ -19,7 +19,11 @@
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <meta name="url" content="{{ url('/') }}">
 
-  <link rel="icon" href="{{ setting('site.favicon', '/wave/favicon.png') }}" type="image/x-icon">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('themes/' . $theme->folder . '/landing/favicon/apple-touch-icon.png')}}">
+  <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('themes/' . $theme->folder . '/landing/favicon/favicon-32x32.png')}}">
+  <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('themes/' . $theme->folder . '/landing/favicon/favicon-16x16.png')}}">
+  <link rel="manifest" href="{{ asset('themes/' . $theme->folder . '/landing/favicon/site.webmanifest')}}">
+  <link rel="mask-icon" href="{{ asset('themes/' . $theme->folder . '/landing/favicon/safari-pinned-tab.svg')}}/" color="#5bbad5">
 
   {{-- Social Share Open Graph Meta Tags --}}
   @if (isset($seo->title) && isset($seo->description) && isset($seo->image))

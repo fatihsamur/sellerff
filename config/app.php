@@ -180,7 +180,8 @@ return [
     Illuminate\View\ViewServiceProvider::class,
     RealRashid\SweetAlert\SweetAlertServiceProvider::class,
     Barryvdh\DomPDF\ServiceProvider::class,
-
+    Jenssegers\Agent\AgentServiceProvider::class,
+    Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
 
 
     /*
@@ -257,6 +258,13 @@ return [
     'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
     'Alert' => RealRashid\SweetAlert\Facades\Alert::class,
     'PDF' => Barryvdh\DomPDF\Facade::class,
+    'Agent' => Jenssegers\Agent\Facades\Agent::class,
+    'SEOMeta'       => Artesaos\SEOTools\Facades\SEOMeta::class,
+    'OpenGraph'     => Artesaos\SEOTools\Facades\OpenGraph::class,
+    'Twitter'       => Artesaos\SEOTools\Facades\TwitterCard::class,
+    'JsonLd'        => Artesaos\SEOTools\Facades\JsonLd::class,
+    'JsonLdMulti'   => Artesaos\SEOTools\Facades\JsonLdMulti::class,
+    'SEO' => Artesaos\SEOTools\Facades\SEOTools::class,
   ],
 
 ];

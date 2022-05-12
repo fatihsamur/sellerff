@@ -1,0 +1,87 @@
+
+
+
+/*===========================
+    12.APPIE COUNTER css 
+===========================*/
+
+
+
+
+.appie-counter-area{
+	@media #{$md} {
+		padding-bottom: 100px;
+	}
+	@media #{$xs} {
+		padding-bottom: 100px;
+	}
+	&.appie-counter-5-area{
+		background: $grey;
+	}
+}
+
+.appie-single-counter{
+	padding: 30px;
+	position: relative;
+	background: $white;
+	height: 160px;
+	background-image: -moz-linear-gradient( 140deg, rgb(221,244,253) 0%, rgb(234,249,255) 100%);
+	background-image: -webkit-linear-gradient( 140deg, rgb(221,244,253) 0%, rgb(234,249,255) 100%);
+	background-image: -ms-linear-gradient( 140deg, rgb(221,244,253) 0%, rgb(234,249,255) 100%);
+	border-radius: 10px;
+	@media #{$lg} {
+		padding: 20px;
+	}
+	@media #{$md} {
+		margin-bottom: 90px;
+	}
+	@media #{$xs} {
+		margin-bottom: 90px;
+	}
+	& .counter-content{
+		background: $white;
+		text-align: center;
+		border-radius: 6px;
+		box-shadow: 0px 30px 40px 0px rgba(0, 41, 57, 0.1);
+		padding-top: 37px;
+		padding-bottom: 40px;
+		& .title{
+			font-size: 40px;
+			font-weight: 400;
+			margin-top: 5px;
+			& span{
+				font-weight: 700;
+			}
+		}
+		& p{
+			font-size: 14px;
+			font-weight: 500;
+		}
+	}
+	&.item-2{
+		background-image: -moz-linear-gradient( 140deg, rgb(253,234,211) 0%, rgb(255,247,238) 100%);
+		background-image: -webkit-linear-gradient( 140deg, rgb(253,234,211) 0%, rgb(255,247,238) 100%);
+		background-image: -ms-linear-gradient( 140deg, rgb(253,234,211) 0%, rgb(255,247,238) 100%);
+		& .counter-content{
+			box-shadow: 0px 30px 40px 0px rgba(56, 31, 0, 0.1);
+		}
+	}
+	&.item-3{
+		background-image: -moz-linear-gradient( 140deg, rgb(218,254,219) 0%, rgb(240,252,240) 100%);
+		background-image: -webkit-linear-gradient( 140deg, rgb(218,254,219) 0%, rgb(240,252,240) 100%);
+		background-image: -ms-linear-gradient( 140deg, rgb(218,254,219) 0%, rgb(240,252,240) 100%);
+		& .counter-content{
+			box-shadow: 0px 30px 40px 0px rgba(0, 74, 1, 0.1);
+		}
+	}
+	&.item-4{
+		background-image: -moz-linear-gradient( 140deg, rgb(254,218,244) 0%, rgb(252,239,247) 100%);
+		background-image: -webkit-linear-gradient( 140deg, rgb(254,218,244) 0%, rgb(252,239,247) 100%);
+		background-image: -ms-linear-gradient( 140deg, rgb(254,218,244) 0%, rgb(252,239,247) 100%);
+		& .counter-content{
+			box-shadow: 0px 30px 40px 0px rgba(74, 0, 54, 0.1);
+		}
+	}
+}
+
+

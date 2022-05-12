@@ -1,0 +1,119 @@
+
+
+
+/*===========================
+    15.APPIE FUN FACT css 
+===========================*/
+
+
+
+.appie-fun-fact-area{
+
+}
+
+.appie-fun-fact-box{
+	background-image: url(../images/fun-fact-bg.jpg);
+	padding: 90px 70px;
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	border-radius: 10px;
+	@media #{$xs} {
+		padding: 30px;
+	}
+	& .appie-fun-fact-content{
+		& > .title{
+			font-size: 44px;
+			line-height: 54px;
+			color: $white;
+			padding-right: 80px;
+			padding-bottom: 15px;
+			@media #{$lg} {
+				font-size: 40px;
+				line-height: 50px;
+			}
+			@media #{$xs} {
+				font-size: 28px;
+				line-height: 38px;
+				padding-right: 0;
+			}
+			@media #{$sm} {
+				font-size: 36px;
+				line-height: 46px;
+				padding-right: 0;
+			}
+		}
+		& p{
+			color: $white;
+			opacity: 0.8;
+		}
+		& .appie-fun-fact-item{
+			margin-top: 36px;
+			@media #{$xs} {
+				text-align: center;
+			}
+			@media #{$sm} {
+				text-align: left;
+			}
+			&  .title{
+				font-size: 30px;
+				color: $white;
+			}
+			& span{
+				font-size: 14px;
+				color: #a4a4b9;
+			}
+		}
+	}
+	& .appie-fun-fact-play{
+		position: relative;
+		z-index: 10;
+		@media #{$md} {
+			margin-top: 50px;
+		}
+		@media #{$xs} {
+			margin-top: 50px;
+			margin-bottom: 20px;
+			text-align: center;
+		}
+		@media #{$sm} {
+			text-align: left;
+		}
+		& img{
+			position: absolute;
+			right: -40px;
+			top: 0;
+			z-index: 2;
+			@media #{$md} {
+				position: static;
+			}
+			@media #{$xs} {
+				display: none;
+			}
+		}
+		& a{
+			height: 70px;
+			width: 70px;
+			text-align: center;
+			line-height: 70px;
+			background: $white;
+			border-radius: 50%;
+			color: $theme-color-3;
+			position: relative;
+			z-index: 5;
+			&::before{
+				position: absolute;
+				content: '';
+				left: 0;
+				top: 0;
+				height: 100%;
+				width: 100%;
+				border: 1px solid #fff;
+				border-radius: 50%;
+				animation: popup 1.5s linear  infinite;
+			}
+		}
+	}
+}
+
+

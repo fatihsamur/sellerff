@@ -4,7 +4,7 @@
 <!-- ====== Navbar Section Start -->
 <div class="ud-header absolute top-0 left-0 z-40 flex w-full items-center bg-transparent">
   <div class="container">
-    <div class="relative -mx-4 flex items-center justify-between">
+    <div class="relative -mx-4 flex items-center justify-between mt-[6px]">
       <div class="w-60 max-w-full px-4">
         <a href="{{ url('/') }}" class="navbar-logo block w-full">
           <img src="{{ asset('themes/' . $theme->folder . '/images/landing/logo/logo-white.svg') }}" alt="logo" class="header-logo w-full" />
@@ -17,41 +17,7 @@
             <span class="relative my-[6px] block h-[2px] w-[30px] bg-white"></span>
             <span class="relative my-[6px] block h-[2px] w-[30px] bg-white"></span>
           </button>
-          <nav id="navbarCollapse" class="absolute right-4 top-full hidden w-full max-w-[250px] rounded-lg bg-white py-5 shadow-lg lg:static lg:block lg:w-full lg:max-w-full lg:bg-transparent lg:py-0 lg:px-4 lg:shadow-none xl:px-6">
-            <ul class="blcok lg:flex">
-              <li class="group relative">
-                <a href="#home" class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70">
-                  Anasayfa
-                </a>
-              </li>
-              <li class="group relative">
-                <a href="#features" class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
-                  Özellikler
-                </a>
-              </li>
-              <li class="group relative">
-                <a href="#pricing" class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
-                  Ücretler
-                </a>
-              </li>
-              <li class="group relative">
-                <a href="#faq" class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
-                  S.S.S
-                </a>
-              </li>
-              <li class="group relative">
-                <a href="#contact" class="ud-menu-scroll mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
-                  İletişim
-                </a>
-              </li>
-              {{-- <li class="group relative">
-                <a href="{{ url('landing-blog') }}" class=" mx-8 flex py-2 text-base text-dark group-hover:text-primary lg:mr-0 lg:ml-7 lg:inline-flex lg:py-6 lg:px-0 lg:text-white lg:group-hover:text-white lg:group-hover:opacity-70 xl:ml-12">
-
-              Blog
-              </a>
-              </li> --}}
-            </ul>
-          </nav>
+          @include('theme::landingpage.components.navbar')
         </div>
         <div class="hidden justify-end pr-16 sm:flex lg:pr-0">
           <a href="{{ url('/login') }}" class="loginBtn py-3 px-7 text-base font-medium text-white hover:opacity-70">
@@ -256,7 +222,7 @@
             </div>
             <div class="p-4 rounded text-center">
               <div class="relative p-12 lg:p-16 z-10 inline-block">
-                <img src="{{ asset('themes/' . $theme->folder . '/images/landing/about/dashboard1.png') }}" alt="image" class="rounded-lg mx-auto lg:ml-auto" />
+                <img src="{{ asset('themes/' . $theme->folder . '/images/2225.png') }}" alt="image" class="rounded-lg mx-auto lg:ml-auto" />
 
               </div>
             </div>
@@ -280,7 +246,7 @@
 
             <div class="p-4 rounded text-center">
               <div class="relative p-12 lg:p-16 z-10 inline-block">
-                <img src="{{ asset('themes/' . $theme->folder . '/images/landing/about/product2.png') }}" alt="image" class="rounded-lg mx-auto lg:ml-auto" />
+                <img src="{{ asset('themes/' . $theme->folder . '/images/11111.png') }}" alt="image" class="rounded-lg mx-auto lg:ml-auto" />
 
               </div>
             </div>
@@ -445,7 +411,7 @@
       <div class="w-full px-4">
         <div class="mx-auto mb-[60px] max-w-[620px] text-center lg:mb-20">
           <span class="mb-2 block text-lg font-semibold text-primary">
-            SSS
+            Sıkça Sorulan Sorular
           </span>
           <h2 class="mb-4 text-3xl font-bold text-dark sm:text-4xl md:text-[42px]">
             Sorunuz var mı?

@@ -1,0 +1,624 @@
+
+
+
+/*===========================
+    2.HEADER css 
+===========================*/
+
+
+
+
+
+.appie-sticky{
+    &.sticky{
+        position: fixed;
+        left: 0;
+        top: 0;
+        right: 0;
+        z-index: 1010;
+        background: $white;
+        box-shadow: 0 15px 30px 0 #0000000f;
+        padding-top: 20px;
+        padding-bottom: 20px;
+        animation: sticky  1.2s;
+    }
+}
+
+
+
+.appie-header-area{
+	padding-top: 30px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    z-index: 999;
+    &.appie-header-2-area{
+        & .appie-btn-box{
+            & .main-btn{
+                background: $theme-color-2;
+                border-radius: 30px;
+                border-color: $theme-color-2;
+                &:hover{
+                    background: transparent;
+                    color: $theme-color-2;
+                }
+            }
+        }
+    }
+    &.appie-header-3-area{
+        &.appie-sticky{
+            &.sticky{
+                background: $heading-color;
+            }
+        }
+    }
+    &.appie-header-4-area{
+        &.appie-sticky{
+            &.sticky{
+                background: linear-gradient(90deg, rgba(107,31,205,1) 0%, rgba(55,78,222,1) 100%);
+            }
+        }
+
+    }
+    &.appie-header-page-area{
+        &.appie-sticky{
+            &.sticky{
+                background: #0a44b9;
+            }
+        }
+
+    }
+    &.appie-header-7-area {
+        &.appie-sticky{
+            &.sticky{
+                background: #290645;
+            }
+        }
+    }
+    &.appie-header-error-page{
+        box-shadow: 0px 10px 20px 0px rgba(14, 17, 51, 0.1);
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+
+
+
+
+.header-nav-box{
+	& .appie-btn-box{
+        position: relative;
+        @media #{$md} {
+            padding-right: 50px;
+        }
+        @media #{$xs} {
+            padding-right: 30px;
+        }
+		& .login-btn{
+			color: $heading-color;
+			font-size: 15px;
+			font-weight: 500;
+			& i{
+				padding-right: 6px;
+			}
+		}
+        & .main-btn{
+            @media #{$xs} {
+                display: none;
+            }
+            @media #{$sm} {
+                padding: 0 10px;
+                display: inline-block;
+            }
+        }
+	}
+    &.header-nav-box-3{
+        & .appie-header-main-menu{
+            & ul{
+                & > li{
+                    & > a{
+                        color: $white;
+                    }
+                    & .sub-menu{
+                        & li{
+                            & a{
+                                color: $heading-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        & .appie-btn-box{
+            & .login-btn{
+                color: $white;
+            }
+            & .main-btn{
+                background: $theme-color-3;
+                border-color: $theme-color-3;
+                &:hover{
+                    background: transparent;
+                    color: $theme-color-3;
+                }
+            }
+        }
+        & .toggle-btn{
+            color: $white;
+            font-size: 20px;
+        }
+        &.header-nav-box-inner-page{
+            & .appie-btn-box{
+                & .main-btn{
+                    border-color: $white;
+                    background: transparent;
+                    &:hover{
+                        background: $white;
+                        color: $theme-color;
+                    }
+                }
+            }
+        }
+    }
+    &.header-nav-box-5{
+        & .appie-header-main-menu{
+            & ul{
+                & > li{
+                    & > a{
+                        color: $white;
+                    }
+                    & .sub-menu{
+                        & li{
+                            & a{
+                                color: $heading-color;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        & .appie-btn-box{
+            & .login-btn{
+                color: $white;
+            }
+            & .main-btn{
+                background: $theme-color-5;
+                border-color: $theme-color-5;
+                &:hover{
+                    background: transparent;
+                    color: $theme-color-5;
+                }
+            }
+        }
+        & .toggle-btn{
+            color: $white;
+            font-size: 20px;
+        }
+    }
+    &.header-nav-4-box{
+        & .appie-header-main-menu{
+            & ul{
+                & > li{
+                    & > a{
+                        &:hover{
+                            color: $theme-color-4;
+                        }
+                    }
+                }
+            }
+        }
+        & .appie-btn-box{
+            & .main-btn{
+                background: $theme-color-4;
+                border-color: $theme-color-4;
+                &:hover{
+                    background: transparent;
+                    color: $theme-color-4;
+                }
+            }
+            & ul{
+                @media #{$xs} {
+                    margin-right: 10px;
+                }
+                & li{
+                    display: inline-block;
+                    & a{
+                        font-size: 18px;
+                        color: $heading-color;
+                        margin-left: 15px;
+                        &.cart-btn{
+                            position: relative;
+                            & span{
+                                position: absolute;
+                                top: -7px;
+                                display: inline-block;
+                                right: -12px;
+                                height: 20px;
+                                width: 20px;
+                                text-align: center;
+                                line-height: 20px;
+                                color: $white;
+                                font-size: 11px;
+                                background: $theme-color-4;
+                                border-radius: 50%;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    &.header-nav-box-6{
+        & .main-btn{
+            background: $theme-color-6;
+            border-color: $theme-color-6;
+            &:hover{
+                background: transparent;
+                color: $theme-color-6;
+            }
+        }
+        & .appie-header-main-menu {
+            & ul{
+                & > li{
+                    & > a{
+                        &:hover{
+                            color: $theme-color-6;
+                        }
+                    }
+                }
+            }
+        }
+        & .appie-btn-box{
+            & form{
+                display: inline-block;
+                margin-left: 18px;
+                @media #{$xs} {
+                    display: none;
+                }
+                @media #{$sm} {
+                    display: inline-block;
+                }
+                & .input-box{
+                    position: relative;
+                    & i{
+                        position: absolute;
+                        left: 20px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                    }
+                    & input{
+                        width: 105px;
+                        padding-left: 50px;
+                        border: 0;
+                        border-left: 1px solid #ddddea;
+                        background: transparent;
+                    }
+                }
+            }
+        }
+
+    }
+    &.header-nav-box-7{
+        & .appie-header-main-menu{
+            & ul{
+                & > li{
+                    & > a{
+                        color: $white;
+                        &:hover{
+                            color: $theme-color;
+                        }
+                    }
+                    & .sub-menu{
+                        & li{
+                            & a{
+                                color: $text-color;
+                                &:hover{
+                                    color: $theme-color;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        & .appie-btn-box{
+            & .login-btn{
+                color: $white;
+            }
+            & .toggle-btn{
+                color: $white;
+            }
+        }
+    }
+}
+
+
+
+
+.appie-header-main-menu{
+    @media #{$md} {
+        display: none;
+    }
+    @media #{$xs} {
+        display: none;
+    }
+	& ul{
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		& > li{
+			display: inline-block;
+            margin-right: 30px;
+			position: relative;
+            @media #{$lg} {
+                margin-right: 14px;
+            }
+			& > a{
+				font-size: 15px;
+				font-weight: 500;
+				color: $heading-color;
+				line-height: 45px;
+				& i{
+					
+					padding-left: 6px;
+				}
+			}
+            & .sub-menu {
+                position: absolute;
+                left: 0;
+                top: 110%;
+                width: auto;
+                min-width: 220px;
+                max-width: 220px;
+                background-color: $white;
+                opacity: 0;
+                visibility: hidden;
+                transition: all linear 0.3s;
+                z-index: 99;
+                @include box-shadow (11px 10px 38px 0 rgba(46, 63, 99, 0.15));
+                list-style-type: none;
+                margin: 0;
+                padding: 15px 0;
+                border-radius: 5px;
+                text-align: left;
+
+                @media #{$laptop} {
+                    min-width: 200px;
+                	max-width: 200px;
+                }
+
+                @media #{$lg} {
+                    min-width: 200px;
+                	max-width: 200px;
+                }
+
+
+                @media #{$md} {
+                    position: relative;
+                    width: 100%;
+                    left: 0;
+                    top: auto;
+                    opacity: 1;
+                    visibility: visible;
+                    display: none;
+                    right: auto;
+                    @include transform(translateX(0%));
+                    @include transition(none);
+                    @include box-shadow(none);
+                    text-align: left;
+                    border-top: 0;
+                    transition: 0s;
+                    padding: 0;
+                }
+
+                @media #{$xs} {
+                    position: relative;
+                    width: 100%;
+                    left: 0;
+                    top: auto;
+                    opacity: 1;
+                    visibility: visible;
+                    display: none;
+                    right: auto;
+                    @include transform(translateX(0%));
+                    @include transition(none);
+                    @include box-shadow(none);
+                    text-align: left;
+                    border-top: 0;
+                    transition: 0s;
+                    padding: 0;
+                }
+
+                & > li {
+                    position: relative;
+                    margin-left: 0;
+                    display: block;
+
+                    & .sub-menu {
+                        margin-left: 0px;
+
+                        @media #{$md} {
+                            margin-left: 0;
+                        }
+
+                        @media #{$xs} {
+                            margin-left: 0;
+                        }
+                    }
+
+                    & .sub-nav-toggler {
+                        color: $heading-color;
+                        @include transition(0.3s);
+                    }
+
+                    & a {
+                        display: block;
+                        padding: 0px 30px;
+                        position: relative;
+                        color: $text-color;
+                        @include transition(0.3s);
+                        border-radius: 4px;
+                        margin: 0 0;
+                        line-height: 2.5;
+
+                        @media #{$laptop} {
+                            padding: 0 20px;
+                        }
+
+                        @media #{$lg} {
+                            padding: 0 20px;
+                        }
+
+                        & i {
+                            float: right;
+                            font-size: 16px;
+                            margin-top: 10px;
+
+                            @media #{$md} {
+                                display: none;
+                            }
+
+                            @media #{$xs} {
+                                display: none;
+                            }
+                        }
+
+                        & .sub-nav-toggler {
+                            & i {
+                                display: inline-block;
+                            }
+                        }
+                        &:hover{
+                        	padding-left: 35px;
+                        }
+                    }
+
+                    & .sub-menu {
+                        right: auto;
+                        left: 100%;
+                        top: 50%;
+                        opacity: 0;
+                        visibility: hidden;
+                        @include transition(0.3s);
+
+                        @media #{$md} {
+                            padding-left: 30px;
+                            @include transition(0s);
+                        }
+
+                        @media #{$xs} {
+                            padding-left: 30px;
+                            @include transition(0s);
+                        }
+
+                        & li {
+                            position: relative;
+
+                            & .sub-menu {
+                                right: auto;
+                                left: 100%;
+                                top: 50%;
+                                opacity: 0;
+                                visibility: hidden;
+                                @include transition(0.3s);
+
+
+                            }
+
+                            &:hover {
+                                & .sub-menu {
+                                    top: 0%;
+                                    opacity: 1;
+                                    visibility: visible;
+                                }
+                            }
+                        }
+                    }
+
+                    &:hover {
+                        & .sub-menu {
+                            top: 0%;
+                            opacity: 1;
+                            visibility: visible;
+                        }
+
+                        & .sub-nav-toggler {
+                            color: $theme-color;
+                        }
+
+                        & > a {
+                            color: $theme-color;
+                        }
+                    }
+                }
+            }
+
+            &:hover {
+                & .sub-menu {
+                    opacity: 1;
+                    visibility: visible;
+                    top: 100%;
+                }
+            }
+		}
+	}
+}
+
+
+
+@-webkit-keyframes sticky {
+    0% {
+        top: -200px;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+@keyframes sticky {
+    0% {
+        top: -200px;
+    }
+
+    100% {
+        top: 0;
+    }
+}
+
+
+
+
+.appie-header-8-area{
+    & .header-nav-box{
+        & .appie-btn-box{
+            & .main-btn{
+                background: $theme-color-7;
+                border-color: $theme-color-7;
+                &:hover{
+                    background: $white;
+                    color: $theme-color-7;
+                }
+            }
+        }
+        & .appie-header-main-menu{
+            & ul{
+                & > li{
+                    & a{
+                        &:hover{
+                            color: $theme-color-7;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+

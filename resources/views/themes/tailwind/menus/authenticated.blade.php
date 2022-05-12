@@ -1,6 +1,6 @@
             <div class="top-bar-boxed flex items-center">
                 <!-- BEGIN: Logo -->
-                <a href="" class="-intro-x hidden md:flex items-center">
+                <a href="{{url('/')}}" class="-intro-x hidden md:flex items-center">
                     @include('theme::svg.main-logo-white')
                 </a>
                 <!-- END: Logo -->

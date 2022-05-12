@@ -1,0 +1,289 @@
+
+
+
+/*===========================
+    9.APPIE FAQ css 
+===========================*/
+
+
+
+.appie-faq-area{
+	background: $grey;
+    position: relative;
+    background-image: url(../images/shape/faq-shape.png);
+    background-position: 94% 100%;
+    background-size: auto;
+    background-repeat: no-repeat;
+}
+
+
+
+
+.faq-accrodion{
+    margin-top: 8px;
+    @media #{$md} {
+        margin-top: 30px;
+    }
+    @media #{$xs} {
+        margin-top: 30px;
+    }
+    & .accrodion{
+        position: relative;
+        -webkit-transition: all .4s ease;
+        transition: all .4s ease;
+        background-color: #fff;
+        border-radius: 6px;
+        overflow: hidden;
+        &::before{
+            content: '';
+            position: absolute;
+            top: -1px;
+            bottom: -1px;
+            left: 0px;
+            right: 0px;
+            border-radius: 0px;
+            -webkit-transform: scaleX(0);
+            transform: scaleX(0);
+            background-image: -webkit-gradient(linear, left top, right top, from(var(--thm-primary)), to(var(--thm-base)));
+            background-image: linear-gradient(90deg, var(--thm-primary) 0%, var(--thm-base) 100%);
+            -webkit-transition: -webkit-transform .4s ease;
+            transition: -webkit-transform .4s ease;
+            border-radius: 5px;
+            transition: transform .4s ease;
+            transition: transform .4s ease, -webkit-transform .4s ease;
+
+        }
+        &+.accrodion{
+            margin-top: 30px;
+        }
+        &.active{
+            box-shadow: 0px 40px 40px 0px rgba(14, 17, 51, 0.1);
+            & .accrodion-inner{
+                margin: 0 1px;
+                background-color: transparent;
+                border-color: #fff;
+            }
+            &::before{
+                -webkit-transform: scaleX(1);
+                transform: scaleX(1);
+
+            }
+            & .accrodion-title{
+                padding-bottom: 0;
+                &::before{
+                    opacity: 0;
+                }
+                &::after{
+                    opacity: 1;
+                    color: $white;
+                }
+            }
+        }
+        & .accrodion-inner{
+            background-color: #fff;
+            padding: 18px 0;
+            border-style: solid;
+            border-width: 1px;
+            border-color: #f2f4f8;
+            border-radius: 0px;
+            position: relative;
+            -webkit-transition: all .4s ease;
+            transition: all .4s ease;
+            overflow: hidden;
+
+        }
+        & .accrodion-title{
+            padding: 0px 38px;
+            cursor: pointer;
+            position: relative;
+            -webkit-transition: all .4s ease;
+            transition: all .4s ease;
+            @media #{$xs} {
+                padding: 0 38px 0 20px;
+            }
+            &::before{
+                content: '\f107';
+                font-family: 'Font Awesome 5 Pro';
+                font-weight: 400;
+                font-size: 14px;
+                color: $theme-color;
+                display: -webkit-box;
+                display: flex;
+                -webkit-box-pack: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                position: absolute;
+                top: 50%;
+                right: 30px;
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+                opacity: 1;
+                -webkit-transition: all 500ms ease;
+                transition: all 500ms ease;
+                height: 40px;
+                width: 40px;
+                background: #eef4fe;
+                text-align: center;
+                line-height: 40px;
+                border-radius: 50%;
+                @media #{$lg} {
+                    right: 5px;
+                }
+                @media #{$xs} {
+                    right: 20px;
+                }
+            }
+            &::after{
+                content: '\f106';
+                font-weight: 400;
+                font-family: 'Font Awesome 5 Pro';
+                font-size: 14px;
+                color: $white;
+                display: -webkit-box;
+                display: flex;
+                -webkit-box-pack: center;
+                justify-content: center;
+                -webkit-box-align: center;
+                position: absolute;
+                top: 50%;
+                right: 30px;
+                -webkit-transform: translateY(-50%);
+                transform: translateY(-50%);
+                opacity: 0;
+                -webkit-transition: all 500ms ease;
+                transition: all 500ms ease;
+                background: $theme-color;
+                height: 40px;
+                width: 40px;
+                text-align: center;
+                line-height: 40px;
+                border-radius: 50%;
+                @media #{$lg} {
+                    right: 5px;
+                }
+                @media #{$xs} {
+                    right: 20px;
+                }
+
+            }
+            & h4{
+                margin: 0;
+                color: $heading-color;
+                font-size: 18px;
+                font-weight: 700;
+
+            }
+        }
+        & .accrodion-content{
+            & .inner{
+                padding: 0 38px;
+                padding-right: 35px;
+                padding-top: 22px;
+                padding-bottom: 0px;
+                @media #{$xs} {
+                    padding: 0 38px 0 20px;
+                }
+            }
+            & p{
+                margin: 0;
+                color: $text-color;
+                font-size: 14px;
+                line-height: 26px;
+                font-weight: 400;
+
+            }
+        }
+    }
+}
+
+
+
+
+
+
+.appie-faq-8-area{
+    background: #eef1f6;
+    position: relative;
+    & .faq-accordion{
+        & .accrodion{
+            & .accrodion-inner{
+                & .accrodion-title{
+                    &::before{
+                        background: #fcecef;
+                        color: $theme-color-7;
+                    }
+                    &::after{
+                        background: $theme-color-7;
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
+    & .faq-play-box{
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        width: 50%;
+        background-image: url(../images/faq-play-bg.png);
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        @media #{$md} {
+            display: none;
+        }
+        @media #{$xs} {
+            display: none;
+        }
+        & .play-btn{
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            & a{
+                height: 80px;
+                width: 80px;
+                text-align: center;
+                line-height: 80px;
+                background: $white;
+                border-radius: 50%;
+                color: $theme-color;
+                position: relative;
+                &::before{
+                    position: absolute;
+                    content: '';
+                    left: 0;
+                    top: 0;
+                    height: 100%;
+                    width: 100%;
+                    border: 1px solid #fff;
+                    border-radius: 50%;
+                    animation: linear infinite popup 1.5s;
+                }
+            }
+        }
+        & .faq-play-counter{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            display: flex;
+            & .box-1{
+                background: rgba(42, 109, 245, 0.9);
+                padding: 50px 60px;
+                & .title{
+                    font-size: 30px;
+                    color: $white;
+                }
+                & span{
+                    font-size: 14px;
+                    color: #d1dbfb;
+                }
+                &.box-2{
+                    background: rgba(14, 17, 51, 0.9);
+                }
+            }
+        }
+    }
+}
+

@@ -20,32 +20,34 @@ class HomeController extends \App\Http\Controllers\Controller
             }
         }
 
-        $seo = [
+        $this->seo()->setTitle('HomePageblabla');
 
-            'title'         => setting('site.title', 'sellerfulfilment'),
-            'description'   => setting('site.description', 'Amazon Seller Automation'),
-            'image'         => url('/og_image.png'),
-            'type'          => 'website'
-
-        ];
-        /* changed to new landing page blade */
-        return view('theme::landingpage/landing-home', compact('seo'));
+        return view('theme::landingpage2/home');
     }
 
-    public function landingBlog()
+    public function faq()
     {
-        return view('theme::landingpage/landing-blog');
+        return view('theme::landingpage2/faq');
     }
-    public function landingBlogDetail()
+
+    public function contactUs()
     {
-        return view('theme::landingpage/landing-blog-detail');
+        return view('theme::landingpage2/contact-us');
+    }
+    public function about()
+    {
+        return view('theme::landingpage2/about');
+    }
+    public function pricing()
+    {
+        return view('theme::landingpage2/pricing');
     }
     public function landingPrivacyPolicy()
     {
-        return view('theme::landingpage/landing-privacy-policy');
+        return view('theme::landingpage2/privacy-policy');
     }
     public function landingTermsOfServices()
     {
-        return view('theme::landingpage/landing-terms-of-services');
+        return view('theme::landingpage2/terms');
     }
 }
