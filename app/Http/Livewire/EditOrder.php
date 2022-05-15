@@ -2,19 +2,17 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Http\Livewire\BaseComponent;
 use App\Model\Order;
 use App\Model\OrderItem;
 use App\Model\User;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderItemsUpdated;
 use App\Model\UserActivity;
 use App\Jobs\SendOrderItemsUpdated;
 
-class EditOrder extends Component
+class EditOrder extends BaseComponent
 {
-    use LivewireAlert;
     public $order_id;
     public $order;
     public $order_model;
@@ -173,12 +171,8 @@ class EditOrder extends Component
           'activity_data' => json_encode(['total_quantity' => $this->order_model->total_quantity ,'price' => number_format($this->order_model->order_total, 2), 'order_id' => $this->order_model->id]),
         ]);
 
-        $this->flash('success', 'Sipariş  Başarıyla Güncellendi.', [
-            'position' => 'top-end',
-            'timer' => 5000,
-            'toast' => true,
-            'timerProgressBar' => true,
-          ], $this->referrer_url);
+        $this->successAlert('Sipariş Başarıyla Güncellendi', $this->referrer_url);
+
 
         if (app()->environment('production')) {
             SendOrderItemsUpdated::dispatch($user->email, $this->order_model->id, $user->name);

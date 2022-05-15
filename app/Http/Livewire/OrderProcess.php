@@ -2,17 +2,16 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Http\Livewire\BaseComponent;
 use Livewire\WithPagination;
 use App\Model\{Order};
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 use PDF;
 
-class OrderProcess extends Component
+class OrderProcess extends BaseComponent
 {
-    use WithPagination, LivewireAlert;
+    use WithPagination;
     public $search;
     public $activeFilter;
     public $boxLabelUrl;

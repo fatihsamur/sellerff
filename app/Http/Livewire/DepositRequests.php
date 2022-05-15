@@ -2,17 +2,14 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Http\Livewire\BaseComponent;
 use App\Model\Deposit;
 use App\Model\User;
 use App\Model\PaymentMethod;
 use App\Model\UserActivity;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 
-class DepositRequests extends Component
+class DepositRequests extends BaseComponent
 {
-    use LivewireAlert;
-
     public function render()
     {
         $waitingDepositRequests = Deposit::with('user', 'payment_method')->where('status', 'Onay Bekliyor')->paginate(10);

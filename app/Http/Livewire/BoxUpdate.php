@@ -2,16 +2,13 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Http\Livewire\BaseComponent;
 use App\Model\Box;
 use App\Model\Order;
 use App\Model\OrderItem;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 
-class BoxUpdate extends Component
+class BoxUpdate extends BaseComponent
 {
-    use LivewireAlert;
-
     public $boxInputs = [];
     public $referrer_url;
 
@@ -53,13 +50,7 @@ class BoxUpdate extends Component
         }
 
 
-
-        $this->flash('success', 'Box ID : '. $box->id .' Boxlar Başarıyla Güncellendi.', [
-        'position' => 'top-end',
-        'timer' => 5000,
-        'toast' => true,
-        'timerProgressBar' => true,
-      ], $this->referrer_url);
+        $this->successAlert('Box ID : '. $box->id .' Boxlar Başarıyla Güncellendi.', $this->referrer_url);
     }
 
     public function deleteBox($box_id)
@@ -67,11 +58,6 @@ class BoxUpdate extends Component
         $box = Box::find($box_id);
         OrderItem::where('box_id', $box_id)->update(['box_id' => null]);
         $box->delete();
-        $this->flash('success', 'Box Başarıyla Silindi.', [
-        'position' => 'top-end',
-        'timer' => 5000,
-        'toast' => true,
-        'timerProgressBar' => true,
-      ], $this->referrer_url);
+        $this->successAlert(' Başarıyla Silindi.', $this->referrer_url);
     }
 }

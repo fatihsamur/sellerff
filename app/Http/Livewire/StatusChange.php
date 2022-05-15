@@ -2,15 +2,13 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Http\Livewire\BaseComponent;
 use App\Model\Order;
 use App\Model\UserInvoice;
 use App\Model\User;
 use App\Model\Box;
 use App\Model\UserActivity;
 use App\Model\Country;
-
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use LaravelDaily\Invoices\Invoice;
 use LaravelDaily\Invoices\Classes\Party;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
@@ -20,9 +18,8 @@ use App\Jobs\SendOrderCompleted;
 use App\Jobs\SendMissingFields;
 use App\Jobs\SendMissingBoxLabel;
 
-class StatusChange extends Component
+class StatusChange extends BaseComponent
 {
-    use LivewireAlert;
     public $order_id;
     public $status;
     public $referrer_url;
@@ -216,12 +213,6 @@ class StatusChange extends Component
           ]);
         }
 
-
-        return $this->flash('success', 'Ürün Durumu Başarıyla Güncellendi.', [
-      'position' => 'top-end',
-      'timeout' => 3000,
-      'toast' => true,
-      'timerProgressBar' => true,
-    ], $this->referrer_url);
+        return $this->successAlert('Ürün Durumu Başarıyla Güncellendi.', $this->referrer_url);
     }
 }

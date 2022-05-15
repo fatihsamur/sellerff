@@ -2,14 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Http\Livewire\BaseComponent;
 use App\Model\Order;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 
-class SktAdd extends Component
+class SktAdd extends BaseComponent
 {
-    use LivewireAlert;
-
     public $orderId;
     public $skt;
     public $order;
@@ -50,11 +47,6 @@ class SktAdd extends Component
             $order_item->save();
         }
 
-        $this->flash('success', 'Son Kullanım Tarihleri Eklendi.', [
-        'position' => 'top-end',
-        'timer' => 5000,
-        'toast' => true,
-        'timerProgressBar' => true,
-      ], $this->referrer_url);
+        $this->successAlert('Son Kullanım Tarihleri Eklendi.', $this->referrer_url);
     }
 }

@@ -2,14 +2,13 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Http\Livewire\BaseComponent;
 use App\Model\Order;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\WithFileUploads;
 
-class UpdateLabelFnsku extends Component
+class UpdateLabelFnsku extends BaseComponent
 {
-    use LivewireAlert, WithFileUploads;
+    use  WithFileUploads;
 
     public $fnsku_list = [];
     public $referrer_url;
@@ -64,11 +63,6 @@ class UpdateLabelFnsku extends Component
             $this->order_model->save();
         }
 
-        $this->flash('success', 'Fnsku ve Label Ekleme Başarılı', [
-      'position' => 'top-end',
-      'timer' => 5000,
-      'toast' => true,
-      'timerProgressBar' => true,
-    ], $this->referrer_url);
+        $this->successAlert('Fnsku ve Label Ekleme Başarılı', $this->referrer_url);
     }
 }

@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Http\Livewire\BaseComponent;
 
 use App\Model\{User};
 
-class Deposits extends Component
+class Deposits extends BaseComponent
 {
     public $paginate = 10;
 

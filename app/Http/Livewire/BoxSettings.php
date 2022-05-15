@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Http\Livewire\BaseComponent;
 use App\Model\Box;
 use Livewire\WithPagination;
 
-class BoxSettings extends Component
+class BoxSettings extends BaseComponent
 {
     use WithPagination;
     public $box_expanded;

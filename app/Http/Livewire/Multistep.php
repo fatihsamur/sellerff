@@ -2,7 +2,7 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Http\Livewire\BaseComponent;
 use App\Model\Country;
 use App\Model\Marketplace;
 use App\Model\AmazonRequest;
@@ -11,12 +11,10 @@ use App\Model\UserActivity;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Livewire\WithFileUploads;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Illuminate\Support\Str;
 
-class Multistep extends Component
+class Multistep extends BaseComponent
 {
-    use LivewireAlert;
     use WithFileUploads;
 
     public $currentStep = 1;

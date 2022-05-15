@@ -29,6 +29,7 @@
         "laravel/framework": "^8.0",
         "laravel/helpers": "^1.0",
         "laravel/horizon": "^5.9",
+        "laravel/telescope": "^4.9",
         "laravel/tinker": "^2.0",
         "laraveldaily/laravel-invoices": "^2.2",
         "livewire/livewire": "^2.4",

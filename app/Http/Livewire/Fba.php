@@ -2,14 +2,13 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Http\Livewire\BaseComponent;
 use Livewire\WithPagination;
 use App\Model\{Order};
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 
-class Fba extends Component
+class Fba extends BaseComponent
 {
-    use WithPagination, LivewireAlert;
+    use WithPagination;
     public $search;
     public $activeFilter;
     public $showBoxInstruction = [];

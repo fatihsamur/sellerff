@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Http\Livewire\BaseComponent;
 use App\Model\User;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
-class ApplyAffiliate extends Component
+class ApplyAffiliate extends BaseComponent
 {
     use LivewireAlert;
     public $affiliate_code;
@@ -19,19 +19,9 @@ class ApplyAffiliate extends Component
     {
         $user = User::where('affiliate_code', $this->affiliate_code)->first();
         if ($user) {
-            $this->alert('success', 'Başarıyla Uygulandı', [
-            'position' => 'top-end',
-            'timer' => 3000,
-            'toast' => true,
-            'timerProgressBar' => true,
-          ]);
+            $this->successAlert('Başarıyla Uygulandı');
         } else {
-            $this->alert('error', 'Maalesef bu kodu bulamadık', [
-            'position' => 'top-end',
-            'timer' => 3000,
-            'toast' => true,
-            'timerProgressBar' => true,
-          ]);
+            $this->failAlert('Kod Geçersiz');
         }
     }
 }

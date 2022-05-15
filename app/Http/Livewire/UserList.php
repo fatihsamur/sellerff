@@ -2,11 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Http\Livewire\BaseComponent;
 use Livewire\WithPagination;
 use App\Model\User;
 
-class UserList extends Component
+class UserList extends BaseComponent
 {
     use WithPagination;
 

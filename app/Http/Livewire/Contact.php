@@ -2,15 +2,13 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Http\Livewire\BaseComponent;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactForm;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use App\Jobs\SendContactForm;
 
-class Contact extends Component
+class Contact extends BaseComponent
 {
-    use LivewireAlert;
     public $sender;
     public $email;
     public $subject;
@@ -32,11 +30,6 @@ class Contact extends Component
         ]);
 
         SendContactForm::dispatch(env('SF_INFO_MAIL'), $this->email, $this->sender, $this->subject, $this->message);
-        return $this->flash('success', 'Mesajınız Başarıyla Gönderildi.', [
-            'position' => 'top-end',
-            'timeout' => 3000,
-            'toast' => true,
-            'timerProgressBar' => true,
-        ]);
+        return $this->successAlert('Mesajınız Başarıyla Gönderildi.');
     }
 }

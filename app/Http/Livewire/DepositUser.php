@@ -2,17 +2,15 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Http\Livewire\BaseComponent;
 use App\Model\User;
 use App\Model\PaymentMethod;
 use App\Model\Deposit;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
+
 use App\Model\UserActivity;
 
-class DepositUser extends Component
+class DepositUser extends BaseComponent
 {
-    use LivewireAlert;
-
     public $depositAmount = 0;
     public $usermail;
     public $description;

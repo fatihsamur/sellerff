@@ -2,17 +2,14 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
 use App\Model\Box;
 use App\Model\Order;
 use App\Model\OrderItem;
 use App\Model\BoxItem;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
+use App\Http\Livewire\BaseComponent;
 
-class BoxCreate extends Component
+class BoxCreate extends BaseComponent
 {
-    use LivewireAlert;
-
     public $order_id;
     public $weight;
     public $length;
@@ -89,13 +86,7 @@ class BoxCreate extends Component
 
 
 
-
-        $this->flash('success', 'Box No :'.$box->id.' Box Başarıyla Atandı.', [
-      'position' => 'top-end',
-      'timer' => 5000,
-      'toast' => true,
-      'timerProgressBar' => true,
-    ], $this->referrer_url);
+        $this->successAlert('Box No :'.$box->id.' Box Başarıyla Atandı.', $this->referrer_url);
     }
 
     public function add($i)
