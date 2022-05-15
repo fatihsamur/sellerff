@@ -14,12 +14,12 @@ use Wave\Plan;
 use Wave\User;
 use Wave\PaddleSubscription;
 use TCG\Voyager\Models\Role;
-use App\Order;
+use App\Model\Order;
 use LaravelDaily\Invoices\Invoice;
 use LaravelDaily\Invoices\Classes\Party;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
-use App\UserActivity;
-use App\UserInvoice;
+use App\Model\UserActivity;
+use App\Model\UserInvoice;
 
 class SubscriptionController extends Controller
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -12,18 +12,18 @@ class Box extends Model
     public $table="boxes";
     public $guarded = [];
 
-    public function  order()
+    public function order()
     {
-        return $this->belongsTo('App\Order');
+        return $this->belongsTo('App\Model\Order');
     }
 
     public function order_items()
     {
-        return $this->hasMany('App\OrderItem');
+        return $this->hasMany('App\Model\OrderItem');
     }
 
     public function box_items()
     {
-        return $this->hasMany('App\BoxItem');
+        return $this->hasMany('App\Model\BoxItem');
     }
 }

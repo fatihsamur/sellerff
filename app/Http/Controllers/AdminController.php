@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\UserActivity;
-use App\User;
+use App\Model\UserActivity;
+use App\Model\User;
 
 class AdminController extends Controller
 {
@@ -29,7 +29,7 @@ class AdminController extends Controller
     }
     public function user_logs($id)
     {
-        return view('theme::admin.user_logs',compact('id'));
+        return view('theme::admin.user_logs', compact('id'));
     }
 
     public function reports()

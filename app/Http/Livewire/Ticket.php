@@ -4,8 +4,8 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\Order;
-use App\Ticket as TicketModel;
+use App\Model\Order;
+use App\Model\Ticket as TicketModel;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Ticket extends Component

@@ -3,13 +3,13 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Box;
+use App\Model\Box;
 use Livewire\WithPagination;
 
 class BoxSettings extends Component
 {
-  use WithPagination;
-  public $box_expanded;
+    use WithPagination;
+    public $box_expanded;
 
 
 
@@ -24,15 +24,15 @@ class BoxSettings extends Component
 
     public function toggleBox($id)
     {
-        if(isset($this->box_expanded[$id])) {
-        $this->box_expanded[$id] = !$this->box_expanded[$id];
+        if (isset($this->box_expanded[$id])) {
+            $this->box_expanded[$id] = !$this->box_expanded[$id];
         } else {
-        $this->box_expanded[$id] = true;
+            $this->box_expanded[$id] = true;
         }
     }
 
     public function createNewBox()
     {
-      Box::create();
+        Box::create();
     }
 }

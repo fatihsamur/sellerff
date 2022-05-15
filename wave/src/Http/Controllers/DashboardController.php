@@ -8,8 +8,7 @@ use DuskCrawler\Inspector;
 use DuskCrawler\Exceptions\InspectionFailed;
 use Laravel\Dusk\Browser;
 use App\Repository\UserRepositoryInterface;
-use App\User;
-
+use App\Model\User;
 
 class DashboardController extends \App\Http\Controllers\Controller
 {
@@ -21,7 +20,6 @@ class DashboardController extends \App\Http\Controllers\Controller
      */
     public function __construct()
     {
-
         $this->middleware('auth');
     }
 

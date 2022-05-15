@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\{Order};
+use App\Model\{Order};
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
@@ -23,12 +23,12 @@ class OrderProcess extends Component
 
     public function mount()
     {
-      $orders = Order::with(['order_items'])->get();
-      foreach($orders as $order){
-        foreach($order->order_items as $item_key => $order_item){
-          $this->sktRequired[$order_item->order_id][$item_key] = $order_item->skt_required;
-      }
-      }
+        $orders = Order::with(['order_items'])->get();
+        foreach ($orders as $order) {
+            foreach ($order->order_items as $item_key => $order_item) {
+                $this->sktRequired[$order_item->order_id][$item_key] = $order_item->skt_required;
+            }
+        }
         $this->search = 'ORDER#';
     }
     public function updatedActiveFilter($value)
@@ -48,17 +48,16 @@ class OrderProcess extends Component
 
 
 
-    public function updatingSktRequired($name,$value)
+    public function updatingSktRequired($name, $value)
     {
-      $order_arr = explode('.',$value);
-      $order_items = Order::find($order_arr[0])->order_items()->get();
-      foreach($order_items as $order_itemkey => $order_item){
-        if($order_itemkey == $order_arr[1]){
-        $order_item->skt_required = !$order_item->skt_required;
-        $order_item->save();
-      }
-      }
-
+        $order_arr = explode('.', $value);
+        $order_items = Order::find($order_arr[0])->order_items()->get();
+        foreach ($order_items as $order_itemkey => $order_item) {
+            if ($order_itemkey == $order_arr[1]) {
+                $order_item->skt_required = !$order_item->skt_required;
+                $order_item->save();
+            }
+        }
     }
 
     /*   public function showLabel($label)
@@ -150,8 +149,8 @@ class OrderProcess extends Component
           });
       })
       ->when($this->search && preg_match('/FBA/', $this->search), function ($query) {
-        $search = explode('#', $this->search)[1] ?? '';
-        return $query->where('warehouse_address', 'like', "%{$search}%");
+          $search = explode('#', $this->search)[1] ?? '';
+          return $query->where('warehouse_address', 'like', "%{$search}%");
       })
       ->when($this->activeFilter, function ($query) {
           return $query->whereIn('status', $this->activeFilter);

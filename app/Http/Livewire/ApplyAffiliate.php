@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\User;
+use App\Model\User;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class ApplyAffiliate extends Component

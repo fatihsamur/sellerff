@@ -3,8 +3,9 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\AmazonRequest;
+use App\Model\AmazonRequest;
 use Illuminate\Support\Facades\Log;
+
 class DeleteAllAmazonRequests extends Command
 {
     /**

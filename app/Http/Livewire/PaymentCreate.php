@@ -3,15 +3,15 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\User;
-use App\PaymentMethod;
-use App\Deposit;
+use App\Model\User;
+use App\Model\PaymentMethod;
+use App\Model\Deposit;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\PaymentRequestCreated;
 use Stripe\Stripe;
 use Stripe\Charge;
-use App\UserActivity;
+use App\Model\UserActivity;
 
 class PaymentCreate extends Component
 {

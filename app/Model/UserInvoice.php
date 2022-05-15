@@ -1,20 +1,19 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class UserActivity extends Model
+class UserInvoice extends Model
 {
     use HasFactory;
 
-    public $table = 'user_activity';
+    public $table = 'user_invoices';
     public $guarded = [];
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo('App\Model\User');
     }
-
 }

@@ -3,12 +3,12 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Order;
-use App\UserInvoice;
-use App\User;
-use App\Box;
-use App\UserActivity;
-use App\Country;
+use App\Model\Order;
+use App\Model\UserInvoice;
+use App\Model\User;
+use App\Model\Box;
+use App\Model\UserActivity;
+use App\Model\Country;
 
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use LaravelDaily\Invoices\Invoice;
@@ -54,7 +54,6 @@ class StatusChange extends Component
 
         $user = User::find($order->user_id);
         if ($this->status == 'Koli Etiketi Bekliyor' && !$order->boxes()->exists()) {
-
             $this->alert('error', 'Henüz Koli Atanmamış!', [
         'position' => 'top-end',
         'timeout' => 3000,
@@ -64,35 +63,32 @@ class StatusChange extends Component
             return;
         }
 
-        if($this->status == 'Koli Etiketi Bekliyor'){
-
-          if (app()->environment('production') ) {
-            Mail::to($user->email)->send(new MissingBoxLabel(['order_number' => $order->id ,'user' => $user->name]));
-            $order->missing_box_label_sent = true;
-            $order->update();
-        }
-
+        if ($this->status == 'Koli Etiketi Bekliyor') {
+            if (app()->environment('production')) {
+                Mail::to($user->email)->send(new MissingBoxLabel(['order_number' => $order->id ,'user' => $user->name]));
+                $order->missing_box_label_sent = true;
+                $order->update();
+            }
         }
 
         if ($this->status != 'İptal Edildi' && $order->status == 'Ödeme Bekliyor') {
-
-          $this->alert('error', 'Ödemesi Tamamlanmamış Ürün', [
+            $this->alert('error', 'Ödemesi Tamamlanmamış Ürün', [
       'position' => 'top-end',
       'timeout' => 3000,
       'toast' => true,
       'timerProgressBar' => true,
     ]);
-          return;
-      }
+            return;
+        }
 
-        if($order->status == 'Tamamlandı' && $this->status == 'İptal Edildi'){
-          $this->alert('error', 'Tamamlanmış Siparişlerde İşlem Yapılamaz', [
+        if ($order->status == 'Tamamlandı' && $this->status == 'İptal Edildi') {
+            $this->alert('error', 'Tamamlanmış Siparişlerde İşlem Yapılamaz', [
             'position' => 'top-end',
             'timeout' => 3000,
             'toast' => true,
             'timerProgressBar' => true,
           ]);
-                return;
+            return;
         }
         $order->status = $this->status;
         $user = User::find($order->user_id);
@@ -114,12 +110,12 @@ class StatusChange extends Component
         'custom_fields' => [
           'order number' => $order->id,
           'box id list' => $order->boxes()->pluck('id')->implode(', '),
-          'tracking number' => Box::where('order_id',$order->id)->pluck('tracking_number')->implode(', ') ?? ''
+          'tracking number' => Box::where('order_id', $order->id)->pluck('tracking_number')->implode(', ') ?? ''
         ],
         'address'      => implode(' ', $order->user->billing_address())
 
       ]);
-            $country = Country::where('id',$order->service_country_id)->pluck('country_code')->first();
+            $country = Country::where('id', $order->service_country_id)->pluck('country_code')->first();
             $invoice_items = [];
             $total_quantity = 0;
             foreach ($order->order_items as $order_item) {
@@ -134,12 +130,12 @@ class StatusChange extends Component
             $shipping_fee = abs($order->order_total - $prep_fee);
 
 
-            if($country == 'us'){
-              $invoice_items[] = (new InvoiceItem())->title('Total Prep Fee')->pricePerUnit($shipping_fee)->quantity(1);
+            if ($country == 'us') {
+                $invoice_items[] = (new InvoiceItem())->title('Total Prep Fee')->pricePerUnit($shipping_fee)->quantity(1);
             }
-            if($country == 'ca'){
-              $invoice_items[] = (new InvoiceItem())->title('Total Prep Fee')->pricePerUnit((int) setting('shipping.default_label_service_price'))->quantity($total_quantity);
-            $invoice_items[] = (new InvoiceItem())->title('Total Shipping Fee')->pricePerUnit($shipping_fee)->quantity(1);
+            if ($country == 'ca') {
+                $invoice_items[] = (new InvoiceItem())->title('Total Prep Fee')->pricePerUnit((int) setting('shipping.default_label_service_price'))->quantity($total_quantity);
+                $invoice_items[] = (new InvoiceItem())->title('Total Shipping Fee')->pricePerUnit($shipping_fee)->quantity(1);
             }
 
 
@@ -183,7 +179,7 @@ class StatusChange extends Component
 
 
         if ($order->status == 'Eksik Bilgileri Tamamlayın') {
-            if (app()->environment('production') ) {
+            if (app()->environment('production')) {
                 Mail::to($user->email)->send(new MissingFields(['order_number' => $order->id ,'user' => $user->name]));
                 $order->missing_field_sent = true;
                 $order->update();
@@ -191,24 +187,24 @@ class StatusChange extends Component
         }
 
         if ($order->status == 'Depoda İşleniyor') {
-          if (app()->environment('production') ) {
-              Mail::to($user->email)->send(new OrderProcessing(['order_number' => $order->id]));
-          }
-      }
-      if ($order->status == 'Tamamlandı') {
-        if (app()->environment('production') ) {
-            Mail::to($user->email)->send(new OrderCompleted(['order_number' => $order->id ,'user' => $user->name]));
+            if (app()->environment('production')) {
+                Mail::to($user->email)->send(new OrderProcessing(['order_number' => $order->id]));
+            }
         }
-    }
+        if ($order->status == 'Tamamlandı') {
+            if (app()->environment('production')) {
+                Mail::to($user->email)->send(new OrderCompleted(['order_number' => $order->id ,'user' => $user->name]));
+            }
+        }
 
 
-        if($this->status == 'İptal Edildi'){
-          $user = User::find($order->user_id);
-          $old_balance = $user->balance;
-        $user->balance += $order->order_total;
-        $user->save();
+        if ($this->status == 'İptal Edildi') {
+            $user = User::find($order->user_id);
+            $old_balance = $user->balance;
+            $user->balance += $order->order_total;
+            $user->save();
 
-          UserActivity::create([
+            UserActivity::create([
             'user_id' => $order->user_id,
             'activity_type' => 'Sipariş İadesi Yapıldı',
             'activity_data' => json_encode([

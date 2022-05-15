@@ -3,11 +3,11 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Country;
-use App\Marketplace;
-use App\AmazonRequest;
-use App\Order;
-use App\UserActivity;
+use App\Model\Country;
+use App\Model\Marketplace;
+use App\Model\AmazonRequest;
+use App\Model\Order;
+use App\Model\UserActivity;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use Livewire\WithFileUploads;

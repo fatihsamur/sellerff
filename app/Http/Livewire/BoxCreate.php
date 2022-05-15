@@ -3,10 +3,10 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Box;
-use App\Order;
-use App\OrderItem;
-use App\BoxItem;
+use App\Model\Box;
+use App\Model\Order;
+use App\Model\OrderItem;
+use App\Model\BoxItem;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class BoxCreate extends Component

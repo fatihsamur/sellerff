@@ -7,10 +7,10 @@ use Livewire\WithFileUploads;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CustomerAddedBoxLabel;
-use App\UserActivity;
-use App\Order;
+use App\Model\UserActivity;
+use App\Model\Order;
 use App\Mail\ProductsArrived;
-use App\User;
+use App\Model\User;
 
 class ShowOrder extends Component
 {
@@ -45,7 +45,7 @@ class ShowOrder extends Component
     }
     public function render()
     {
-        $order = \App\Order::with(['order_items', 'boxes.order_items', 'boxes.box_items.order_item'])->find($this->orderId);
+        $order = \App\Model\Order::with(['order_items', 'boxes.order_items', 'boxes.box_items.order_item'])->find($this->orderId);
         return view('livewire.show-order', compact('order'));
     }
 
@@ -81,7 +81,7 @@ class ShowOrder extends Component
 
     public function payOrder()
     {
-        $order = \App\Order::find($this->orderId);
+        $order = \App\Model\Order::find($this->orderId);
 
 
         $user = auth()->user();

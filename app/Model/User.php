@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Model;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -29,7 +29,7 @@ class User extends \Wave\User
 
     public function deposits()
     {
-        return $this->hasMany('App\Deposit');
+        return $this->hasMany('App\Model\Deposit');
     }
     public function shipping_address_line()
     {
@@ -41,6 +41,6 @@ class User extends \Wave\User
     }
     public function invoices()
     {
-        return $this->hasMany('App\UserInvoice');
+        return $this->hasMany('App\Model\UserInvoice');
     }
 }

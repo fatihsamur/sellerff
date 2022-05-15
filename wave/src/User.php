@@ -13,8 +13,8 @@ use Illuminate\Database\Eloquent\Model;
 use \Storage;
 use Wave\Announcement;
 use Wave\ApiToken;
-use App\Order;
-use App\Deposit;
+use App\Model\Order;
+use App\Model\Deposit;
 
 class User extends \TCG\Voyager\Models\User implements JWTSubject
 {
@@ -207,7 +207,7 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
     }
     public function user_activity()
     {
-        return $this->hasMany('App\UserActivity');
+        return $this->hasMany('App\Model\UserActivity');
     }
 
     public function getCancelUrlAttribute()
@@ -239,10 +239,10 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
 
     public function affiliates()
     {
-        return $this->hasMany('App\Affiliate');
+        return $this->hasMany('App\Model\Affiliate');
     }
     public function tickets()
     {
-        return $this->hasMany('App\Ticket');
+        return $this->hasMany('App\Model\Ticket');
     }
 }

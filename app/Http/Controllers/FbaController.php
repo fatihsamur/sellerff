@@ -9,11 +9,10 @@ use Facebook\WebDriver\Remote\DesiredCapabilities;
 use Laravel\Dusk\Browser;
 use Laravel\Dusk\Chrome\ChromeProcess;
 use Laravel\Dusk\ElementResolver;
-use App\Order;
-use App\User;
+use App\Model\Order;
+use App\Model\User;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ProductsArrived;
-
 
 class FbaController extends Controller
 {
@@ -55,13 +54,8 @@ class FbaController extends Controller
     }
 
 
-    public function products_arrived(Request $request,$id)
+    public function products_arrived(Request $request, $id)
     {
-
-
-      return redirect()->back()->with('success','Üyeliğiniz iptal edildi.');
-
-
-
+        return redirect()->back()->with('success', 'Üyeliğiniz iptal edildi.');
     }
 }

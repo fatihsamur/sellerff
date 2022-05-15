@@ -3,13 +3,13 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Order;
-use App\OrderItem;
-use App\User;
+use App\Model\Order;
+use App\Model\OrderItem;
+use App\Model\User;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderItemsUpdated;
-use App\UserActivity;
+use App\Model\UserActivity;
 
 class EditOrder extends Component
 {

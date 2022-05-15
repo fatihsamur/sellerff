@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
-use App\PaymentMethod;
-use App\Ticket;
+use App\Model\User;
+use App\Model\PaymentMethod;
+use App\Model\Ticket;
 use Illuminate\Support\Facades\Artisan;
 
 class SupportController extends Controller

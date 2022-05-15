@@ -4,7 +4,7 @@ namespace App\Http\Livewire;
 
 use Livewire\Component;
 use Livewire\WithPagination;
-use App\{Order};
+use App\Model\{Order};
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class Fba extends Component
@@ -50,8 +50,8 @@ class Fba extends Component
       ->when($this->search, function ($query) {
           return $query->where('id', $this->search);
       })
-    ->when(!$this->activeFilter,function ($query){
-          return $query->where('status' , '!=' , 'İptal Edildi');
+    ->when(!$this->activeFilter, function ($query) {
+        return $query->where('status', '!=', 'İptal Edildi');
     })
     ->orderBy('id', 'desc')
     ->paginate(5)

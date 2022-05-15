@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Order;
+use App\Model\Order;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
 class UpdateTracking extends Component
