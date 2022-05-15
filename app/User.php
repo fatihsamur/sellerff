@@ -10,14 +10,7 @@ class User extends \Wave\User
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = [
-    'phone_number','address','name', 'email', 'username', 'password', 'verification_code', 'verified', 'trial_ends_at','line1','line2','state','city','zip_code','address','phone_number','billing_line1','billing_line2','billing_state','billing_city','billing_zip_code','billing_address','billing_phone_number'
-  ];
+    protected $guarded = [];
 
     protected $dates = [
     'created_at',

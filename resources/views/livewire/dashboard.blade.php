@@ -15,7 +15,7 @@
                         <div class="text-xl 2xl:text-base font-medium -mb-1"> Merhaba {{ auth()->user()->name }}, <span
                                 class="text-gray-700 dark:text-gray-500 font-normal"> hoşgeldiniz</span> </div>
                     </div>
-                    <div  class="grid grid-cols-12 gap-6 mt-5">
+                    <div class="grid grid-cols-12 gap-6 mt-5">
                         <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                             <div class="report-box zoom-in">
                                 <div class="box p-5">
@@ -92,7 +92,8 @@
 
 
                                     </div>
-                                    <a href="{{url('/settings/plans')}}" class="text-theme-1 block font-extrabold mt-4">Prime Üyeliği edinin</a>
+                                    <a href="{{ url('/settings/plans') }}"
+                                        class="text-theme-1 block font-extrabold mt-4">Prime Üyeliği edinin</a>
                                     @endnotprime
                                 </div>
                             </div>
@@ -110,12 +111,10 @@
                         <a href="{{ url('fba/create') }}"
                             class="btn w-32 bg-white dark:bg-dark-2 dark:text-white mt-6 sm:mt-10">Hemen Başla</a>
                         <img class="hidden sm:block absolute top-0 right-0 w-2/5 -mt-3 mr-2"
-                            alt="Rubick Tailwind HTML Admin Template"
                             src="{{ asset('themes/' . $theme->folder . '/images/woman-illustration.svg') }}">
                     </div>
                 </div>
-                <!-- END: Ads 1 -->
-                <!-- BEGIN: Ads 2 -->
+
                 <div class="col-span-12 lg:col-span-6 mt-6">
                     <div class="ads-box box p-8 relative overflow-hidden intro-y">
                         <div class="ads-box__title w-full sm:w-52 text-theme-1 dark:text-white text-xl -mt-3">Arkadaşını
@@ -123,25 +122,22 @@
                         <div class="w-full sm:w-60 leading-relaxed text-gray-600 mt-2">Davet et kazan kampanyamızdan tüm
                             üyelerimiz yararlanabilmektedir.</div>
                         <div class="w-48 relative mt-6 cursor-pointer ">
-                            Çok Yakında
-                            {{-- <input class="form-control" value="{{ config('app.url') }}">
-                            <svg data-clipboard-text="{{ config('app.url') }}" id="copy-affiliate-link"
-                                xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            <div class="form-control text-sm" >{{ auth()->user()->affiliate_code }}</div>
+                            <svg data-clipboard-text="{{ auth()->user()->affiliate_code }}" id="copy-affiliate-link"
+                                xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
                                 stroke-linejoin="round"
                                 class="feather feather-copy absolute right-0 top-0 bottom-0 my-auto mr-4 w-4 h-4">
                                 <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
                                 <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
-                            </svg> --}}
+                            </svg>
                         </div>
                         <img class="hidden sm:block absolute top-0 right-0 w-1/2 mt-1 -mr-12"
                             alt="Rubick Tailwind HTML Admin Template"
                             src="{{ asset('themes/' . $theme->folder . '/images/phone-illustration.svg') }}">
                     </div>
                 </div>
-                <!-- END: Ads 2 -->
-                <!-- END: General Report -->
-                <!-- BEGIN: Sales Report -->
+
                 <div class="col-span-12 lg:col-span-12 mt-8">
                     <div class="intro-y block sm:flex items-center h-10">
                         <h2 class="text-lg font-medium truncate mr-5">

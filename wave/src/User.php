@@ -9,7 +9,7 @@ use Lab404\Impersonate\Models\Impersonate;
 use Tymon\JWTAuth\Contracts\JWTSubject;
 use Wave\Plan;
 use Wave\PaddleSubscription;
-
+use Illuminate\Database\Eloquent\Model;
 use \Storage;
 use Wave\Announcement;
 use Wave\ApiToken;
@@ -20,16 +20,7 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
 {
     use Notifiable, Impersonate;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    /*     protected $fillable = [
-        'phone_number','address','name', 'email', 'username', 'password', 'verification_code', 'verified', 'trial_ends_at', 'balance','role_id','line1',
-        'line2','state','city','zip_code','address','phone_number','billing_line1',
-        'billing_line2','billing_state','billing_city','billing_zip_code','billing_address','billing_phone_number'
-      ]; */
+
     protected $guarded = [];
 
     /**
@@ -40,6 +31,7 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
     protected $hidden = [
     'password', 'remember_token',
   ];
+
 
     public function keyValues()
     {
@@ -243,5 +235,14 @@ class User extends \TCG\Voyager\Models\User implements JWTSubject
             'zip_code' => $this->zip_code,
             'phone_number' => $this->phone_number,
         ];
+    }
+
+    public function affiliates()
+    {
+        return $this->hasMany('App\Affiliate');
+    }
+    public function tickets()
+    {
+        return $this->hasMany('App\Ticket');
     }
 }

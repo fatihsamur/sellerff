@@ -1,6 +1,6 @@
             <div class="top-bar-boxed flex items-center">
                 <!-- BEGIN: Logo -->
-                <a href="{{url('/')}}" class="-intro-x hidden md:flex items-center">
+                <a href="{{ url('/') }}" class="-intro-x hidden md:flex items-center">
                     @include('theme::svg.main-logo-white')
                 </a>
                 <!-- END: Logo -->
@@ -19,7 +19,7 @@
                     </div>
                     <a class="notification notification--light sm:hidden" href=""> <i data-feather="search"
                             class="notification__icon dark:text-gray-300"></i> </a>
-<!--                     <div class="search-result">
+                    <!--                     <div class="search-result">
                         <div class="search-result__content">
                             <div class="search-result__content__title">Pages</div>
                             <div class="mb-5">
@@ -70,14 +70,16 @@
                                     <div class="relative items-center justify-center hidden h-full md:flex">
                                         <span
                                             class="px-3 py-1 text-xs text-red-600 bg-red-100 border border-gray-200 rounded-md">You
-                                            have {{ auth()->user()->daysLeftOnTrial() }} @if (auth()->user()->daysLeftOnTrial() > 1){{ 'Days' }}@else{{ 'Day' }}@endif left
+                                            have {{ auth()->user()->daysLeftOnTrial() }} @if (auth()->user()->daysLeftOnTrial() > 1)
+                                                {{ 'Days' }}@else{{ 'Day' }}
+                                            @endif left
                                             on your Trial</span>
                                     </div>
                                 @endif
                                 <div class="font-medium">{{ auth()->user()->name }}</div>
                                 @employee
                                 <div class="flex items-center">
-                                  Depo Personeli
+                                    Depo Personeli
                                 </div>
                                 @endemployee
                                 @notemployee
@@ -95,7 +97,7 @@
                             <div class="p-2">
                                 <a href="{{ url('payments') }}"
                                     class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md">
-                                    <i data-feather="user" class="w-4 h-4 mr-2"></i> Bakiye İşlemleri </a>
+                                    <i data-feather="dollar-sign" class="w-4 h-4 mr-2"></i> Bakiye İşlemleri </a>
 
                                 @trial
                                 <a href="{{ route('wave.settings', 'plans') }}"
@@ -105,13 +107,17 @@
 
                                 <a href="{{ route('wave.settings') }}"
                                     class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md">
-                                    <i data-feather="help-circle" class="w-4 h-4 mr-2"></i> Ayarlar </a>
+                                    <i data-feather="settings" class="w-4 h-4 mr-2"></i> Ayarlar </a>
+
+                                <a href="{{ route('fba.tickets') }}"
+                                    class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md">
+                                    <i data-feather="help-circle" class="w-4 h-4 mr-2"></i> Destek Talebi </a>
                             </div>
                             @endnotemployee
                             <div class="p-2 border-t border-theme-27 dark:border-dark-3">
                                 <a href="{{ route('wave.logout') }}"
                                     class="flex items-center block p-2 transition duration-300 ease-in-out hover:bg-theme-1 dark:hover:bg-dark-3 rounded-md">
-                                    <i data-feather="toggle-right" class="w-4 h-4 mr-2"></i> Çıkış </a>
+                                    <i data-feather="x" class="w-4 h-4 mr-2"></i> Çıkış </a>
                             </div>
                         </div>
                     </div>

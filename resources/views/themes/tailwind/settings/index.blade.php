@@ -61,6 +61,9 @@
                         href="{{ url('settings/logs') }}"> <i data-feather="activity" class="w-4 h-4 mr-2"></i>
                         Kullanıcı
                         Geçmişi</a>
+                    <a class="flex items-center mt-5 @if (Request::is('settings/affiliate')) font-medium text-theme-1 @endif"
+                        href="{{ url('settings/affiliate') }}"> <i data-feather="gift" class="w-4 h-4 mr-2"></i>
+                        Promosyon & Affiliate</a>
                 </div>
                 <div class="p-5 border-t border-gray-200 dark:border-dark-5">
                     <div class="relative flex items-center p-5">

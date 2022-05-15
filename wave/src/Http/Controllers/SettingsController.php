@@ -164,8 +164,8 @@ class SettingsController extends Controller
         $user->update(
             [
         'line1' => $request->line1,
-        'line2' => $request->line2??NULL,
-        'name' => $request->name??NULL,
+        'line2' => $request->line2??null,
+        'name' => $request->name??null,
         'state' => $request->state,
         'city' => $request->city,
         'zip_code' => $request->zip_code,
@@ -202,5 +202,10 @@ class SettingsController extends Controller
     ]
         );
         return back()->with(['message' => 'Fatura Adresi Bilgileriniz Başarıyla Güncellendi.', 'message_type' => 'success']);
+    }
+
+    public function affiliate()
+    {
+        return view('theme::settings.affiliate');
     }
 }

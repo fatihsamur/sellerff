@@ -2,9 +2,7 @@
     <input name="password" type="password" wire:model.debounce.200ms="password" class="intro-x login__input form-control py-3 px-4 border-gray-300 block mt-4"
         placeholder="Şifre">
     @error('password') <span class="text-red-500">{{ $message }}</span> @enderror
-    <input name="confirmation_password" wire:model.debounce.200ms="password_confirmation" type="password" class="intro-x login__input form-control py-3 px-4 border-gray-300 block mt-4"
-        placeholder="Şifre Doğrulama">
-    @error('verification_password') <span class="text-red-500">{{ $message }}</span> @enderror
+
 
     <div class="intro-x w-full grid grid-cols-12 gap-4 h-1 mt-3">
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\WarehouseController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\StripeController;
+use App\Http\Controllers\SupportController;
 
 /* use Laravel\Dusk\Http\Controllers\UserController; */
 
@@ -89,6 +90,9 @@ Route::group(['middleware' => ['auth', 'roles'], 'roles' => ['prime', 'basic', '
     Route::get('/payments/create', [PaymentController::class, 'create'])->name('payment.create');
     Route::post('/payments/create/{id}/stripe/pay', [StripeController::class, 'charge'])->name('stripe.pay');
     Route::get('fba/order/{id}/cancel', [FbaController::class, 'cancel'])->name('fba.cancel');
+    Route::get('/tickets', [SupportController::class, 'index'])->name('fba.tickets');
+    Route::get('/tickets/{id}', [SupportController::class, 'show'])->name('fba.tickets.show');
+    Route::get('/tickets/create', [SupportController::class, 'create'])->name('fba.tickets.create');
 
 
     Route::get('/other-services', function () {

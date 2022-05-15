@@ -15,6 +15,7 @@ use Illuminate\Validation\Rules\Password;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\Welcome;
 use App\Mail\CustomerRegistered;
+use App\Utils\Helpers;
 
 class RegisterController extends \App\Http\Controllers\Controller
 {
@@ -45,7 +46,6 @@ class RegisterController extends \App\Http\Controllers\Controller
       'password' =>
       Password::min(8)
         ->numbers(),
-      'confirmation_password' => 'required|string|min:6|same:password',
       'conditions' => 'required|accepted'
     ];
     }
@@ -64,7 +64,6 @@ class RegisterController extends \App\Http\Controllers\Controller
       'password' =>
       Password::min(8)
         ->numbers(),
-      'confirmation_password' => 'required|string|min:6|same:password',
       'conditions' => 'required|accepted',
     ];
     }
@@ -190,13 +189,15 @@ class RegisterController extends \App\Http\Controllers\Controller
             $trial_ends_at = now()->addDays(setting('billing.trial_days', 14));
         }
 
+        $aff_code = Helpers::generateAffCode();
+
         $user = User::create([
       'name' => $data['name'],
       'email' => $data['email'],
       'username' => $username,
       'phone_number' => $data['phone'],
       'line1' => $data['line1'],
-      'line2' => $data['line2']??NULL,
+      'line2' => $data['line2']??null,
       'state' => $data['state'],
       'city' => $data['city'],
       'zip_code' => $data['zip_code'],
@@ -204,7 +205,8 @@ class RegisterController extends \App\Http\Controllers\Controller
       'role_id' => $role->id,
       'verification_code' => $verification_code,
       'verified' => $verified,
-      'trial_ends_at' => $trial_ends_at
+      'trial_ends_at' => $trial_ends_at,
+      'affiliate_code' => $aff_code
     ]);
 
 
