@@ -2,15 +2,14 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Http\Livewire\BaseComponent;
 use Livewire\WithPagination;
-use App\Order;
-use App\Ticket as TicketModel;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
+use App\Model\Order;
+use App\Model\Ticket as TicketModel;
 
-class Ticket extends Component
+class Ticket extends BaseComponent
 {
-    use WithPagination, LivewireAlert;
+    use WithPagination;
     public $search;
     public $activeFilter;
     public $showBoxInstruction = [];

@@ -15,202 +15,200 @@ use Livewire\Livewire;
 
 class WaveServiceProvider extends ServiceProvider
 {
+    public function register()
+    {
+        $loader = AliasLoader::getInstance();
+        $loader->alias('Wave', WaveFacade::class);
 
-  public function register()
-  {
+        $this->app->singleton('wave', function () {
+            return new Wave();
+        });
 
-    $loader = AliasLoader::getInstance();
-    $loader->alias('Wave', WaveFacade::class);
+        $this->loadHelpers();
 
-    $this->app->singleton('wave', function () {
-      return new Wave();
-    });
+        $this->loadLivewireComponents();
 
-    $this->loadHelpers();
-
-    $this->loadLivewireComponents();
-
-    $waveMiddleware = [
-      \Illuminate\Auth\Middleware\Authenticate::class,
+        $waveMiddleware = [
+      /* \Illuminate\Auth\Middleware\Authenticate::class,
       \Wave\Http\Middleware\TrialEnded::class,
-      \Wave\Http\Middleware\Cancelled::class,
+      \Wave\Http\Middleware\Cancelled::class, */
     ];
 
-    $this->app->router->aliasMiddleware('token_api', \Wave\Http\Middleware\TokenMiddleware::class);
-    $this->app->router->pushMiddlewareToGroup('web', \Wave\Http\Middleware\WaveMiddleware::class);
-    $this->app->router->pushMiddlewareToGroup('web', \Wave\Http\Middleware\InstallMiddleware::class);
+        /* $this->app->router->aliasMiddleware('token_api', \Wave\Http\Middleware\TokenMiddleware::class); */
+        /* $this->app->router->pushMiddlewareToGroup('web', \Wave\Http\Middleware\WaveMiddleware::class); */
+        /* $this->app->router->pushMiddlewareToGroup('web', \Wave\Http\Middleware\InstallMiddleware::class); */
 
-    $this->app->router->middlewareGroup('wave', $waveMiddleware);
-  }
+        $this->app->router->middlewareGroup('wave', $waveMiddleware);
+    }
 
-  public function boot(Router $router, Dispatcher $event)
-  {
-    Relation::morphMap([
+    public function boot(Router $router, Dispatcher $event)
+    {
+        Relation::morphMap([
       'users' => config('wave.user_model')
     ]);
 
-    if (!config('wave.show_docs')) {
-      Gate::define('viewLarecipe', function ($user, $documentation) {
-        return true;
-      });
+        if (!config('wave.show_docs')) {
+            Gate::define('viewLarecipe', function ($user, $documentation) {
+                return true;
+            });
+        }
+
+        $this->loadViewsFrom(__DIR__ . '/../docs/', 'docs');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'wave');
+        $this->loadMigrationsFrom(realpath(__DIR__ . '/../database/migrations'));
+        $this->loadBladeDirectives();
     }
 
-    $this->loadViewsFrom(__DIR__ . '/../docs/', 'docs');
-    $this->loadViewsFrom(__DIR__ . '/../resources/views', 'wave');
-    $this->loadMigrationsFrom(realpath(__DIR__ . '/../database/migrations'));
-    $this->loadBladeDirectives();
-  }
-
-  protected function loadHelpers()
-  {
-    foreach (glob(__DIR__ . '/Helpers/*.php') as $filename) {
-      require_once $filename;
+    protected function loadHelpers()
+    {
+        foreach (glob(__DIR__ . '/Helpers/*.php') as $filename) {
+            require_once $filename;
+        }
     }
-  }
 
-  protected function loadMiddleware()
-  {
-    foreach (glob(__DIR__ . '/Http/Middleware/*.php') as $filename) {
-      require_once $filename;
+    protected function loadMiddleware()
+    {
+        foreach (glob(__DIR__ . '/Http/Middleware/*.php') as $filename) {
+            require_once $filename;
+        }
     }
-  }
 
-  protected function loadBladeDirectives()
-  {
+    protected function loadBladeDirectives()
+    {
 
     // Subscription Directives
 
-    Blade::directive('subscribed', function ($plan) {
-      return "<?php if (!auth()->guest() && auth()->user()->subscribed($plan)) { ?>";
-    });
+        Blade::directive('subscribed', function ($plan) {
+            return "<?php if (!auth()->guest() && auth()->user()->subscribed($plan)) { ?>";
+        });
 
-    Blade::directive('notsubscribed', function () {
-      return "<?php } else { ?>";
-    });
+        Blade::directive('notsubscribed', function () {
+            return "<?php } else { ?>";
+        });
 
-    Blade::directive('endsubscribed', function () {
-      return "<?php } ?>";
-    });
-
-
-    // Subscriber Directives
-
-    Blade::directive('subscriber', function () {
-      return "<?php if (!auth()->guest() && auth()->user()->subscriber()) { ?>";
-    });
-
-    Blade::directive('notsubscriber', function () {
-      return "<?php } else { ?>";
-    });
-
-    Blade::directive('endsubscriber', function () {
-      return "<?php } ?>";
-    });
-
-    Blade::directive('admin', function () {
-      return "<?php if (!auth()->guest() && auth()->user()->isAdmin()) { ?>";
-    });
-
-    Blade::directive('endadmin', function () {
-      return "<?php } ?>";
-    });
-
-    Blade::directive('notadmin', function () {
-      return "<?php if (!auth()->guest() && !auth()->user()->isAdmin()) { ?>";
-    });
-
-    Blade::directive('endnotadmin', function () {
-      return "<?php } ?>";
-    });
-
-    Blade::directive('employee', function () {
-      return "<?php if (!auth()->guest() && auth()->user()->isEmployee()) { ?>";
-    });
-
-    Blade::directive('endemployee', function () {
-      return "<?php } ?>";
-    });
-    Blade::directive('notemployee', function () {
-      return "<?php if (!auth()->guest() && !auth()->user()->isEmployee()) { ?>";
-    });
-
-    Blade::directive('endnotemployee', function () {
-      return "<?php } ?>";
-    });
+        Blade::directive('endsubscribed', function () {
+            return "<?php } ?>";
+        });
 
 
-    Blade::directive('customer', function () {
-      return "<?php if (!auth()->guest() && auth()->user()->isCustomer()) { ?>";
-    });
+        // Subscriber Directives
 
-    Blade::directive('endcustomer', function () {
-      return "<?php } ?>";
-    });
+        Blade::directive('subscriber', function () {
+            return "<?php if (!auth()->guest() && auth()->user()->subscriber()) { ?>";
+        });
 
-    Blade::directive('prime', function () {
-      return "<?php if (!auth()->guest() && auth()->user()->isPrime()) { ?>";
-    });
+        Blade::directive('notsubscriber', function () {
+            return "<?php } else { ?>";
+        });
 
-    Blade::directive('endprime', function () {
-      return "<?php } ?>";
-    });
-    Blade::directive('notprime', function () {
-      return "<?php if (!auth()->guest() && !auth()->user()->isPrime()) { ?>";
-    });
+        Blade::directive('endsubscriber', function () {
+            return "<?php } ?>";
+        });
 
-    Blade::directive('endnotprime', function () {
-      return "<?php } ?>";
-    });
+        Blade::directive('admin', function () {
+            return "<?php if (!auth()->guest() && auth()->user()->isAdmin()) { ?>";
+        });
 
+        Blade::directive('endadmin', function () {
+            return "<?php } ?>";
+        });
 
-    // Trial Directives
+        Blade::directive('notadmin', function () {
+            return "<?php if (!auth()->guest() && !auth()->user()->isAdmin()) { ?>";
+        });
 
-    Blade::directive('trial', function ($plan) {
-      return "<?php if (!auth()->guest() && auth()->user()->onTrial()) { ?>";
-    });
+        Blade::directive('endnotadmin', function () {
+            return "<?php } ?>";
+        });
 
-    Blade::directive('nottrial', function () {
-      return "<?php } else { ?>";
-    });
+        Blade::directive('employee', function () {
+            return "<?php if (!auth()->guest() && auth()->user()->isEmployee()) { ?>";
+        });
 
-    Blade::directive('endtrial', function () {
-      return "<?php } ?>";
-    });
+        Blade::directive('endemployee', function () {
+            return "<?php } ?>";
+        });
+        Blade::directive('notemployee', function () {
+            return "<?php if (!auth()->guest() && !auth()->user()->isEmployee()) { ?>";
+        });
 
-    // home Directives
-
-    Blade::directive('home', function () {
-      $isHomePage = false;
-
-      // check if we are on the homepage
-      if (request()->is('/')) {
-        $isHomePage = true;
-      }
-
-      return "<?php if ($isHomePage) { ?>";
-    });
-
-    Blade::directive('nothome', function () {
-      return "<?php } else { ?>";
-    });
+        Blade::directive('endnotemployee', function () {
+            return "<?php } ?>";
+        });
 
 
-    Blade::directive('endhome', function () {
-      return "<?php } ?>";
-    });
+        Blade::directive('customer', function () {
+            return "<?php if (!auth()->guest() && auth()->user()->isCustomer()) { ?>";
+        });
+
+        Blade::directive('endcustomer', function () {
+            return "<?php } ?>";
+        });
+
+        Blade::directive('prime', function () {
+            return "<?php if (!auth()->guest() && auth()->user()->isPrime()) { ?>";
+        });
+
+        Blade::directive('endprime', function () {
+            return "<?php } ?>";
+        });
+        Blade::directive('notprime', function () {
+            return "<?php if (!auth()->guest() && !auth()->user()->isPrime()) { ?>";
+        });
+
+        Blade::directive('endnotprime', function () {
+            return "<?php } ?>";
+        });
 
 
-    Blade::directive('waveCheckout', function () {
-      return '{!! view("wave::checkout")->render() !!}';
-    });
-  }
+        // Trial Directives
 
-  private function loadLivewireComponents()
-  {
-    Livewire::component('wave.settings.security', \Wave\Http\Livewire\Settings\Security::class);
-    Livewire::component('wave.settings.api', \Wave\Http\Livewire\Settings\Api::class);
-    Livewire::component('wave.settings.plans', \Wave\Http\Livewire\Settings\Plans::class);
-    Livewire::component('wave.settings.subscription', \Wave\Http\Livewire\Settings\Subscription::class);
-    Livewire::component('wave.settings.invoices', \Wave\Http\Livewire\Settings\Invoices::class);
-  }
+        Blade::directive('trial', function ($plan) {
+            return "<?php if (!auth()->guest() && auth()->user()->onTrial()) { ?>";
+        });
+
+        Blade::directive('nottrial', function () {
+            return "<?php } else { ?>";
+        });
+
+        Blade::directive('endtrial', function () {
+            return "<?php } ?>";
+        });
+
+        // home Directives
+
+        Blade::directive('home', function () {
+            $isHomePage = false;
+
+            // check if we are on the homepage
+            if (request()->is('/')) {
+                $isHomePage = true;
+            }
+
+            return "<?php if ($isHomePage) { ?>";
+        });
+
+        Blade::directive('nothome', function () {
+            return "<?php } else { ?>";
+        });
+
+
+        Blade::directive('endhome', function () {
+            return "<?php } ?>";
+        });
+
+
+        Blade::directive('waveCheckout', function () {
+            return '{!! view("wave::checkout")->render() !!}';
+        });
+    }
+
+    private function loadLivewireComponents()
+    {
+        Livewire::component('wave.settings.security', \Wave\Http\Livewire\Settings\Security::class);
+        Livewire::component('wave.settings.api', \Wave\Http\Livewire\Settings\Api::class);
+        Livewire::component('wave.settings.plans', \Wave\Http\Livewire\Settings\Plans::class);
+        Livewire::component('wave.settings.subscription', \Wave\Http\Livewire\Settings\Subscription::class);
+        Livewire::component('wave.settings.invoices', \Wave\Http\Livewire\Settings\Invoices::class);
+    }
 }

@@ -2,20 +2,17 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
-use App\User;
-use App\PaymentMethod;
-use App\Deposit;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\PaymentRequestCreated;
+use App\Jobs\SendPaymentRequestCreated;
+use App\Http\Livewire\BaseComponent;
+use App\Model\User;
+use App\Model\PaymentMethod;
+use App\Model\Deposit;
 use Stripe\Stripe;
 use Stripe\Charge;
-use App\UserActivity;
+use App\Model\UserActivity;
 
-class PaymentCreate extends Component
+class PaymentCreate extends BaseComponent
 {
-    use LivewireAlert;
     public $selectedPaymentMethod = '';
     public $depositAmount = 0;
     public $referrer_url;
@@ -75,14 +72,9 @@ class PaymentCreate extends Component
     ]);
 
         if (app()->environment('production')) {
-            Mail::to(env('SF_PAYMENT_MAIL'))->send(new PaymentRequestCreated());
+            SendPaymentRequestCreated::dispatch(env('SF_PAYMENT_MAIL'));
         }
-        $this->flash('success', 'Bakiye Yükleme Talebiniz Oluşturuldu.', [
-      'position' => 'top-end',
-      'timer' => 5000,
-      'toast' => true,
-      'timerProgressBar' => true,
-    ], $this->referrer_url);
+        $this->success('Bakiye Yükleme Talebiniz Başarıyla Oluşturuldu.', $this->referrer_url);
     }
 
 
@@ -156,19 +148,10 @@ class PaymentCreate extends Component
           'activity_type' => 'Bakiye Yükleme İşlemi',
           'activity_data' => json_encode(['payment_method' => 'stripe','transfer_number' => $this->receipt_url, 'amount' => $this->depositAmount ]),
         ]);
-            $this->flash('success', 'Bakiye Yükleme İşleminiz Gerçekleştirildi.', [
-          'position' => 'top-end',
-          'timer' => 5000,
-          'toast' => true,
-          'timerProgressBar' => true,
-        ], 'https://sellerfulfilment.com/payments');
+
+            $this->successAlert('Bakiye Yükleme İşlemi Başarıyla Gerçekleştirildi.', route('payment'));
         } catch (\Throwable $th) {
-            $this->alert('error', 'Ödeme Alınırken Bir hata Oluştu.' .$th->getMessage(), [
-          'position' => 'top-end',
-          'timer' => 5000,
-          'toast' => true,
-          'timerProgressBar' => true
-        ]);
+            $this->failAlert('Ödeme Alınırken Bir hata Oluştu.' .$th->getMessage(), route('payment'));
         }
     }
 }

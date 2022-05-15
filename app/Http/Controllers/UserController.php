@@ -3,19 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\{UserActivity,User};
-use Wave\Plan;
+use App\Model\UserActivity;
+use App\Model\User;
+use Wave\Model\Plan;
+
 class UserController extends Controller
 {
-    public function cancel_subscription(Request $request,$id)
+    public function cancel_subscription(Request $request, $id)
     {
-
-      $user = User::find($id);
-      $old_plan  = Plan::where('role_id',$user->role_id)->first();
-      $user->role_id = 3;
-      $plan = Plan::where('role_id',$user->role_id)->first();
-      $user->save();
-      UserActivity::create([
+        $user = User::find($id);
+        $old_plan  = Plan::where('role_id', $user->role_id)->first();
+        $user->role_id = 3;
+        $plan = Plan::where('role_id', $user->role_id)->first();
+        $user->save();
+        UserActivity::create([
         'user_id' => $user->id,
         'activity_type' => 'Plan İptal Edildi',
         'activity_data' => json_encode([
@@ -25,7 +26,6 @@ class UserController extends Controller
           'new_plan_price' => $plan->price
         ])
       ]);
-      return redirect()->back()->with('success','Üyeliğiniz iptal edildi.');
+        return redirect()->back()->with('success', 'Üyeliğiniz iptal edildi.');
     }
-
 }

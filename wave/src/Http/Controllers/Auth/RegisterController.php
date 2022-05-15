@@ -2,7 +2,7 @@
 
 namespace Wave\Http\Controllers\Auth;
 
-use App\User;
+use App\Model\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Auth\Events\Registered;
@@ -16,6 +16,8 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\Welcome;
 use App\Mail\CustomerRegistered;
 use App\Utils\Helpers;
+use App\Jobs\SendWelcome;
+use App\Jobs\SendCustomerRegistered;
 
 class RegisterController extends \App\Http\Controllers\Controller
 {
@@ -152,7 +154,7 @@ class RegisterController extends \App\Http\Controllers\Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @return \App\Model\User
      */
     public function create(array $data)
     {
@@ -213,9 +215,13 @@ class RegisterController extends \App\Http\Controllers\Controller
         /* if (setting('auth.verify_email', false)) {
           $this->sendVerificationEmail($user);
         } */
+
+
+
+
         if (app()->environment('production')) {
-            Mail::to($user->email)->send(new Welcome(['user' => $user->name]));
-            Mail::to('member@sellerfulfilment.com')->send(new CustomerRegistered(['user_id' => $user->id]));
+            SendCustomerRegistered::dispatch($user->email, $user->id);
+            SendWelcome::dispatch($user->email, $user->name);
         }
         return $user;
     }

@@ -3,7 +3,7 @@
 namespace Wave\Http\Livewire\Settings;
 
 use Livewire\Component;
-use Wave\ApiKey;
+use Wave\Model\ApiKey;
 
 class Api extends Component
 {
@@ -25,7 +25,8 @@ class Api extends Component
     public $deleteKey = '';
     public $deleteModal = false;
 
-    public function mount(){
+    public function mount()
+    {
         $this->refreshKeys();
     }
 
@@ -37,21 +38,24 @@ class Api extends Component
         ];
     }
 
-    public function readApiModal(ApiKey $key){
+    public function readApiModal(ApiKey $key)
+    {
         $this->readKey = $key;
         $this->readModal = true;
     }
 
-    public function editApiModal(ApiKey $key){
+    public function editApiModal(ApiKey $key)
+    {
         $this->editKey = $key;
         $this->editModal = true;
     }
 
-    public function edit(){
+    public function edit()
+    {
         $this->validateOnly('editKey.name');
 
         // For security reasons we need to be sure that the user editing the key name is the owner of the API key
-        if($this->editKey->user_id != auth()->user()->id){
+        if ($this->editKey->user_id != auth()->user()->id) {
             // Display danger toast notification
             $this->dispatchBrowserEvent('popToast', ['type' => 'danger', 'message' => 'Cannot update key name. Invalid User']);
         } else {
@@ -65,8 +69,8 @@ class Api extends Component
         $this->refreshKeys();
     }
 
-    public function add(){
-
+    public function add()
+    {
         $this->validateOnly('key_name');
 
         $apiKey = auth()->user()->createApiKey(str_slug($this->key_name));
@@ -80,15 +84,17 @@ class Api extends Component
         $this->refreshKeys();
     }
 
-    public function deleteApiModal(ApiKey $key){
+    public function deleteApiModal(ApiKey $key)
+    {
         $this->deleteKey = $key;
         $this->deleteModal = true;
     }
 
-    public function delete(){
+    public function delete()
+    {
 
         // For security reasons we need to make sure that the user deleting the API key is the owner of the API key
-        if($this->deleteKey->user_id != auth()->user()->id){
+        if ($this->deleteKey->user_id != auth()->user()->id) {
             // Display danger toast notification
             $this->dispatchBrowserEvent('popToast', ['type' => 'danger', 'message' => 'Cannot delete Key. Invalid User']);
         } else {
@@ -101,7 +107,8 @@ class Api extends Component
         $this->refreshKeys();
     }
 
-    public function refreshKeys(){
+    public function refreshKeys()
+    {
         $this->keys = auth()->user()->apiKeys;
     }
 

@@ -1,5 +1,5 @@
 <div class="flex flex-wrap mx-auto mt-12 justify-center text-center">
-  @foreach (Wave\Plan::all() as $plan)
+  @foreach (Wave\Model\Plan::all() as $plan)
   @php $features = explode(',', $plan->features); @endphp
   <div class=" @if($loop->index!=0)ml-4 @endif   intro-y box flex flex-col lg:flex-row mt-5">
 

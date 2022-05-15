@@ -3,7 +3,7 @@
 namespace App\Http\Livewire;
 
 use Livewire\Component;
-use App\Ticket as TicketModel;
+use App\Model\Ticket as TicketModel;
 
 class ShowTicket extends Component
 {

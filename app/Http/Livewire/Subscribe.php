@@ -2,12 +2,10 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
+use App\Http\Livewire\BaseComponent;
 
-class Subscribe extends Component
+class Subscribe extends BaseComponent
 {
-    use LivewireAlert;
     public $email;
 
     public function render()

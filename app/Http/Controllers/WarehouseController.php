@@ -3,11 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Order;
-use App\User;
-use App\UserActivity;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\WaitingPayment;
+use App\Model\Order;
+use App\Model\User;
+use App\Model\UserActivity;
+use App\Jobs\SendWaitingPayment;
 
 class WarehouseController extends Controller
 {
@@ -51,10 +50,9 @@ class WarehouseController extends Controller
 
     public function cancel(Request $request, $id)
     {
-
         $order = Order::find($id);
-        if($order->status == 'Tamamlandı'){
-          return redirect()->route('warehouse.order_process');
+        if ($order->status == 'Tamamlandı') {
+            return redirect()->route('warehouse.order_process');
         }
         $order->status = 'İptal Edildi';
         $user = User::find($order->user_id);
@@ -62,7 +60,7 @@ class WarehouseController extends Controller
         $user->balance += $order->order_total;
         $user->save();
         $order->save();
-          UserActivity::create([
+        UserActivity::create([
             'user_id' => $order->user_id,
             'activity_type' => 'Sipariş İadesi Yapıldı',
             'activity_data' => json_encode([
@@ -90,8 +88,7 @@ class WarehouseController extends Controller
     {
         $order = Order::find($id);
         $user = User::find($order->user_id);
-        Mail::to($user->email)->send(new WaitingPayment(['order_number' => $order->id ,'user' => $user->name]));
-        return redirect()->back()->with('success','Üyeliğiniz iptal edildi.');
-
+        SendWaitingPayment::dispatch($user->email, $user->name, $order->id);
+        return redirect()->back()->with('success', 'Üyeliğiniz iptal edildi.');
     }
 }

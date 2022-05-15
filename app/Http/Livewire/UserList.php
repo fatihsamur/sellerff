@@ -2,27 +2,25 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\{Component,WithPagination};
-use App\User;
+use App\Http\Livewire\BaseComponent;
+use Livewire\WithPagination;
+use App\Model\User;
 
-class UserList extends Component
+class UserList extends BaseComponent
 {
-  use WithPagination;
+    use WithPagination;
 
-  public $search;
+    public $search;
 
-  public function render()
+    public function render()
     {
-        $users = User::
-        when($this->search, function ($query) {
-          return
+        $users = User::when($this->search, function ($query) {
+            return
           $query->where('id', 'like', "%{$this->search}%")
           ->orWhere('email', 'like', "%{$this->search}%")
           ->orWhere('name', 'like', "%{$this->search}%");
         })
         ->paginate(10);
-        return view('livewire.user-list',compact('users'));
+        return view('livewire.user-list', compact('users'));
     }
-
-
 }

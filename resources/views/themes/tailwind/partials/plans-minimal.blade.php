@@ -1,5 +1,5 @@
 <div class="flex flex-wrap w-full mx-auto divide-x divide-gray-100 divide-solid">
-    @foreach(Wave\Plan::all() as $plan)
+    @foreach(Wave\Model\Plan::all() as $plan)
         @php $features = explode(',', $plan->features); @endphp
 
         <div class="w-full max-w-md px-0 mx-auto mb-6 lg:w-1/3 lg:mb-0">

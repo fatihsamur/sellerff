@@ -7,9 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Storage;
 use Validator;
-use Wave\User;
-use Wave\KeyValue;
-use Wave\ApiKey;
+use Wave\Model\User;
+use Wave\Model\KeyValue;
+use Wave\Model\ApiKey;
 use TCG\Voyager\Http\Controllers\Controller;
 
 class SettingsController extends Controller

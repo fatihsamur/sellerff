@@ -2,24 +2,20 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Http\Livewire\BaseComponent;
 
-use App\{User};
+use App\Model\{User};
 
-
-
-class Deposits extends Component
+class Deposits extends BaseComponent
 {
+    public $paginate = 10;
 
-  public $paginate = 10;
-
-  public function render()
-  {
-
-    $user_id = auth()->user()->id;
-    $deposits = User::find($user_id)->deposits()->with('payment_method')->orderBy('id', 'DESC')->paginate($this->paginate);
-    return view('livewire.deposits', [
+    public function render()
+    {
+        $user_id = auth()->user()->id;
+        $deposits = User::find($user_id)->deposits()->with('payment_method')->orderBy('id', 'DESC')->paginate($this->paginate);
+        return view('livewire.deposits', [
       'deposits' => $deposits
     ]);
-  }
+    }
 }

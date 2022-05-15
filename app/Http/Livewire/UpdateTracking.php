@@ -2,14 +2,11 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
-use App\Order;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
+use App\Http\Livewire\BaseComponent;
+use App\Model\Order;
 
-class UpdateTracking extends Component
+class UpdateTracking extends BaseComponent
 {
-    use LivewireAlert;
-
     public $buyer_list = [];
     public $referrer_url;
 
@@ -54,11 +51,6 @@ class UpdateTracking extends Component
             $this->order_model->save();
         }
 
-        $this->flash('success', 'Buyer ve Tracking Id Ekleme Başarılı', [
-      'position' => 'top-end',
-      'timer' => 5000,
-      'toast' => true,
-      'timerProgressBar' => true,
-    ], $this->referrer_url);
+        $this->successAlert('Buyer ve Tracking Id Ekleme Başarılı', $this->referrer_url);
     }
 }

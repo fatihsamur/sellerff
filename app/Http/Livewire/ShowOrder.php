@@ -2,20 +2,20 @@
 
 namespace App\Http\Livewire;
 
-use Livewire\Component;
+use App\Http\Livewire\BaseComponent;
 use Livewire\WithFileUploads;
-use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CustomerAddedBoxLabel;
-use App\UserActivity;
-use App\Order;
-use App\Mail\ProductsArrived;
-use App\User;
+use App\Model\UserActivity;
+use App\Model\Order;
+use App\Model\User;
+use App\Jobs\SendProductsArrived;
+use App\Jobs\SendCustomerAddedBoxLabel;
 
-class ShowOrder extends Component
+class ShowOrder extends BaseComponent
 {
     use WithFileUploads;
-    use LivewireAlert;
+
 
 
     public $orderId;
@@ -45,7 +45,7 @@ class ShowOrder extends Component
     }
     public function render()
     {
-        $order = \App\Order::with(['order_items', 'boxes.order_items', 'boxes.box_items.order_item'])->find($this->orderId);
+        $order = \App\Model\Order::with(['order_items', 'boxes.order_items', 'boxes.box_items.order_item'])->find($this->orderId);
         return view('livewire.show-order', compact('order'));
     }
 
@@ -66,22 +66,16 @@ class ShowOrder extends Component
             $boxLabelNames[] = $box->id . '_' . $key . '.pdf';
         }
 
-        Mail::to(env('SF_WAREHOUSE_MAIL'))->send(new CustomerAddedBoxLabel(['order_id' => $this->orderId ]));
-
+        SendCustomerAddedBoxLabel::dispatch(env('SF_WAREHOUSE_MAIL'), $this->orderId);
         $box->box_label = json_encode($boxLabelNames);
         $box->save();
 
-        $this->flash('success', 'Koli Etiketleri Yüklendi.', [
-      'position' => 'top-end',
-      'timer' => 5000,
-      'toast' => true,
-      'timerProgressBar' => true,
-    ], $this->referrer_url);
+        $this->successAlert('Koli Etiketleri Yüklendi.', $this->referrer_url);
     }
 
     public function payOrder()
     {
-        $order = \App\Order::find($this->orderId);
+        $order = \App\Model\Order::find($this->orderId);
 
 
         $user = auth()->user();
@@ -109,32 +103,18 @@ class ShowOrder extends Component
               'activity_data' => json_encode(['old_balance' => number_format($user_old_balance, 2), 'new_balance' => number_format(auth()->user()->balance, 2), 'price' => number_format($price, 2), 'order_id' => $order_id]),
             ]);
 
-            return $this->flash('success', 'Sipariş Ödemesi Tamamlandı.', [
-              'position' => 'top-end',
-              'timer' => 5000,
-              'toast' => true,
-              'timerProgressBar' => true,
-            ], $this->referrer_url);
+
+            return $this->successAlert('Sipariş Ödemesi Yapıldı.', $this->referrer_url);
         }
 
-        return $this->flash('warning', 'Yetersiz Bakiye.', [
-          'position' => 'top-end',
-          'timer' => 5000,
-          'toast' => true,
-          'timerProgressBar' => true,
-        ], $this->referrer_url);
+        return $this->warningAlert('Bakiye Yetersiz.', $this->referrer_url);
     }
 
     public function productsArrived($id)
     {
         $order = Order::find($id);
         $user = User::find($order->user_id);
-        Mail::to(env('SF_WAREHOUSE_MAIL'))->send(new ProductsArrived(['order_number' => $order->id ,'user' => $user->name]));
-        $this->flash('success', 'Depo Ürünlerinizle İlgili Bilgilendirilmiştir.', [
-        'position' => 'top-end',
-        'timer' => 5000,
-        'toast' => true,
-        'timerProgressBar' => true,
-      ], $this->referrer_url);
+        SendProductsArrived::dispatch(env('SF_WAREHOUSE_MAIL'), $order->id, $user->name);
+        $this->successAlert('Depo Ürünlerinizle İlgili Bilgilendirilmiştir.', $this->referrer_url);
     }
 }

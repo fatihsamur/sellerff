@@ -10,16 +10,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Auth;
-use Wave\Plan;
-use Wave\User;
-use Wave\PaddleSubscription;
+use Wave\Model\Plan;
+use Wave\Model\User;
+use Wave\Model\PaddleSubscription;
 use TCG\Voyager\Models\Role;
-use App\Order;
+use App\Model\Order;
 use LaravelDaily\Invoices\Invoice;
 use LaravelDaily\Invoices\Classes\Party;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
-use App\UserActivity;
-use App\UserInvoice;
+use App\Model\UserActivity;
+use App\Model\UserInvoice;
 
 class SubscriptionController extends Controller
 {

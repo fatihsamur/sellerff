@@ -1,4 +1,4 @@
-@php $plans = Wave\Plan::all() @endphp
+@php $plans = Wave\Model\Plan::all() @endphp
 
 <div class="box">
     <div class="flex flex-col">
