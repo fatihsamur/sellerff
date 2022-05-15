@@ -7,9 +7,6 @@ use App\Http\Livewire\BaseComponent;
 use App\Model\User;
 use App\Model\PaymentMethod;
 use App\Model\Deposit;
-
-use Illuminate\Support\Facades\Mail;
-
 use Stripe\Stripe;
 use Stripe\Charge;
 use App\Model\UserActivity;
