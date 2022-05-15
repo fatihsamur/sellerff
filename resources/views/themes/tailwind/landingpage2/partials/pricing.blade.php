@@ -12,7 +12,7 @@
         <div class="tabed-content">
             <div id="month">
                 <div class="row justify-content-center">
-                    @foreach (Wave\Plan::all() as $plan)
+                    @foreach (Wave\Model\Plan::all() as $plan)
                         @php $features = explode(',', $plan->features); @endphp
                         <div class="col-lg-4 col-md-6 wow animated fadeInLeft">
                             <div class="pricing-one__single">

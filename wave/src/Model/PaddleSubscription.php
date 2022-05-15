@@ -1,6 +1,6 @@
 <?php
 
-namespace Wave;
+namespace Wave\Model;
 
 use Illuminate\Database\Eloquent\Model;
 

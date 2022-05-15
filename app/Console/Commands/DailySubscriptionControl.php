@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use App\Model\User;
 use App\Model\UserActivity;
 use App\Model\UserInvoice;
-use Wave\{Plan};
+use Wave\Model\{Plan};
 use LaravelDaily\Invoices\Invoice;
 use LaravelDaily\Invoices\Classes\Party;
 use LaravelDaily\Invoices\Classes\InvoiceItem;

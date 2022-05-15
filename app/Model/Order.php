@@ -4,7 +4,7 @@ namespace App\Model;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Wave\User;
+use Wave\Model\User;
 use App\Model\OrderItem;
 use App\Model\Box;
 use App\Model\Country;

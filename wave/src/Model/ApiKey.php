@@ -1,15 +1,14 @@
 <?php
 
-namespace Wave;
+namespace Wave\Model;
 
 use Illuminate\Database\Eloquent\Model;
 
-
 class ApiKey extends Model
 {
-	protected $table = 'api_keys';
- 
- 	/**
+    protected $table = 'api_keys';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array
@@ -18,8 +17,8 @@ class ApiKey extends Model
         'user_id', 'name', 'key', 'last_used_at'
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(config('auth.providers.users.model'));
     }
-
 }

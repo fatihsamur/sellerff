@@ -1,18 +1,18 @@
 <?php
 
-namespace Wave;
+namespace Wave\Model;
 
 use Carbon\Carbon;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Lab404\Impersonate\Models\Impersonate;
 use Tymon\JWTAuth\Contracts\JWTSubject;
-use Wave\Plan;
-use Wave\PaddleSubscription;
+use Wave\Model\Plan;
+use Wave\Model\PaddleSubscription;
 use Illuminate\Database\Eloquent\Model;
 use \Storage;
-use Wave\Announcement;
-use Wave\ApiToken;
+use Wave\Model\Announcement;
+use Wave\Model\ApiToken;
 use App\Model\Order;
 use App\Model\Deposit;
 

@@ -5,7 +5,7 @@ namespace App\Http\Livewire;
 use Livewire\Component;
 use App\Repository\UserRepositoryInterface;
 use App\Model\{User};
-use Wave\Plan;
+use Wave\Model\Plan;
 use Asantibanez\LivewireCharts\Models\LineChartModel;
 
 class AdminReports extends Component

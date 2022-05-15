@@ -47,7 +47,6 @@ class VerifyEmail extends Notification
                     ->line('Thanks for signing up, but before you can continue we need to verify your email.')
                     ->action('Verify Email', $url)
                     ->line('Thanks! See you soon.');
-
     }
 
     /**

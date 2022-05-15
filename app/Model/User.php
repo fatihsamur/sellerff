@@ -6,7 +6,7 @@ use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use \Storage;
 
-class User extends \Wave\User
+class User extends \Wave\Model\User
 {
     use Notifiable;
 

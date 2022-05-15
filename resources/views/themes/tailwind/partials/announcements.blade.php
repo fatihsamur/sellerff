@@ -1,4 +1,4 @@
-@php $announcement = Wave\Announcement::orderBy('created_at', 'DESC')->first() @endphp
+@php $announcement = Wave\Model\Announcement::orderBy('created_at', 'DESC')->first() @endphp
 <div id="announcement" class="fixed bottom-0 right-0 z-50 flex items-end justify-center px-4 py-6 transition-all duration-200 ease-out transform translate-y-0 opacity-100 cursor-pointer pointer-events-none hover:-translate-y-1 sm:p-6 sm:items-start sm:justify-end" data-href="{{ route('wave.announcement', $announcement->id) }}">
 	<div id="announcement_content" class="relative w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow-lg pointer-events-auto">
 		<div class="relative p-5">

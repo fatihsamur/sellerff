@@ -1,6 +1,6 @@
 <?php
 
-namespace Wave;
+namespace Wave\Model;
 
 use Illuminate\Database\Eloquent\Model;
 use TCG\Voyager\Models\Role;
@@ -12,12 +12,13 @@ class Plan extends Model
     {
         parent::boot();
 
-        self::creating(function($model){
+        self::creating(function ($model) {
             $model->slug = Str::lower(Str::slug($model->name));
         });
     }
 
-    public function role() {
+    public function role()
+    {
         return $this->belongsTo(Role::class);
     }
 }

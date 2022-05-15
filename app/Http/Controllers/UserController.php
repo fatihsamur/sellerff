@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Model\UserActivity;
 use App\Model\User;
-use Wave\Plan;
+use Wave\Model\Plan;
 
 class UserController extends Controller
 {
