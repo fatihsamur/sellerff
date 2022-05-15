@@ -6,8 +6,7 @@ use Illuminate\Http\Request;
 use App\Model\Order;
 use App\Model\User;
 use App\Model\UserActivity;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\WaitingPayment;
+use App\Jobs\SendWaitingPayment;
 
 class WarehouseController extends Controller
 {
@@ -89,7 +88,7 @@ class WarehouseController extends Controller
     {
         $order = Order::find($id);
         $user = User::find($order->user_id);
-        Mail::to($user->email)->send(new WaitingPayment(['order_number' => $order->id ,'user' => $user->name]));
+        SendWaitingPayment::dispatch($user->email, $user->name, $order->id);
         return redirect()->back()->with('success', 'Üyeliğiniz iptal edildi.');
     }
 }

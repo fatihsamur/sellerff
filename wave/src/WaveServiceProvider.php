@@ -29,14 +29,14 @@ class WaveServiceProvider extends ServiceProvider
         $this->loadLivewireComponents();
 
         $waveMiddleware = [
-      \Illuminate\Auth\Middleware\Authenticate::class,
+      /* \Illuminate\Auth\Middleware\Authenticate::class,
       \Wave\Http\Middleware\TrialEnded::class,
-      \Wave\Http\Middleware\Cancelled::class,
+      \Wave\Http\Middleware\Cancelled::class, */
     ];
 
-        $this->app->router->aliasMiddleware('token_api', \Wave\Http\Middleware\TokenMiddleware::class);
-        $this->app->router->pushMiddlewareToGroup('web', \Wave\Http\Middleware\WaveMiddleware::class);
-        $this->app->router->pushMiddlewareToGroup('web', \Wave\Http\Middleware\InstallMiddleware::class);
+        /* $this->app->router->aliasMiddleware('token_api', \Wave\Http\Middleware\TokenMiddleware::class); */
+        /* $this->app->router->pushMiddlewareToGroup('web', \Wave\Http\Middleware\WaveMiddleware::class); */
+        /* $this->app->router->pushMiddlewareToGroup('web', \Wave\Http\Middleware\InstallMiddleware::class); */
 
         $this->app->router->middlewareGroup('wave', $waveMiddleware);
     }

@@ -9,8 +9,9 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\CustomerAddedBoxLabel;
 use App\Model\UserActivity;
 use App\Model\Order;
-use App\Mail\ProductsArrived;
 use App\Model\User;
+use App\Jobs\SendProductsArrived;
+use App\Jobs\SendCustomerAddedBoxLabel;
 
 class ShowOrder extends Component
 {
@@ -66,8 +67,7 @@ class ShowOrder extends Component
             $boxLabelNames[] = $box->id . '_' . $key . '.pdf';
         }
 
-        Mail::to(env('SF_WAREHOUSE_MAIL'))->send(new CustomerAddedBoxLabel(['order_id' => $this->orderId ]));
-
+        SendCustomerAddedBoxLabel::dispatch(env('SF_WAREHOUSE_MAIL'), $this->orderId);
         $box->box_label = json_encode($boxLabelNames);
         $box->save();
 
@@ -129,7 +129,7 @@ class ShowOrder extends Component
     {
         $order = Order::find($id);
         $user = User::find($order->user_id);
-        Mail::to(env('SF_WAREHOUSE_MAIL'))->send(new ProductsArrived(['order_number' => $order->id ,'user' => $user->name]));
+        SendProductsArrived::dispatch(env('SF_WAREHOUSE_MAIL'), $order->id, $user->name);
         $this->flash('success', 'Depo Ürünlerinizle İlgili Bilgilendirilmiştir.', [
         'position' => 'top-end',
         'timer' => 5000,

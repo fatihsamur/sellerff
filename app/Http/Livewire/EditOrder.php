@@ -10,6 +10,7 @@ use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\OrderItemsUpdated;
 use App\Model\UserActivity;
+use App\Jobs\SendOrderItemsUpdated;
 
 class EditOrder extends Component
 {
@@ -180,7 +181,7 @@ class EditOrder extends Component
           ], $this->referrer_url);
 
         if (app()->environment('production')) {
-            Mail::to($user->email)->send(new OrderItemsUpdated(['order_number' => $this->order_model->id ,'user' => $user->name]));
+            SendOrderItemsUpdated::dispatch($user->email, $this->order_model->id, $user->name);
         }
     }
 

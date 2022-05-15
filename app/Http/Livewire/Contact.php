@@ -6,6 +6,7 @@ use Livewire\Component;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactForm;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use App\Jobs\SendContactForm;
 
 class Contact extends Component
 {
@@ -30,7 +31,7 @@ class Contact extends Component
             'agree' => 'required',
         ]);
 
-        Mail::to(env('SF_INFO_MAIL'))->send(new ContactForm(['sender' => $this->sender, 'email' => $this->email, 'subject' => $this->subject, 'message' => $this->message]));
+        SendContactForm::dispatch(env('SF_INFO_MAIL'), $this->email, $this->sender, $this->subject, $this->message);
         return $this->flash('success', 'Mesajınız Başarıyla Gönderildi.', [
             'position' => 'top-end',
             'timeout' => 3000,

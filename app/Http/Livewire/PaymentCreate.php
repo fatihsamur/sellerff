@@ -2,13 +2,14 @@
 
 namespace App\Http\Livewire;
 
+use App\Jobs\SendPaymentRequestCreated;
 use Livewire\Component;
 use App\Model\User;
 use App\Model\PaymentMethod;
 use App\Model\Deposit;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\PaymentRequestCreated;
+
 use Stripe\Stripe;
 use Stripe\Charge;
 use App\Model\UserActivity;
@@ -75,7 +76,7 @@ class PaymentCreate extends Component
     ]);
 
         if (app()->environment('production')) {
-            Mail::to(env('SF_PAYMENT_MAIL'))->send(new PaymentRequestCreated());
+            SendPaymentRequestCreated::dispatch(env('SF_PAYMENT_MAIL'));
         }
         $this->flash('success', 'Bakiye Yükleme Talebiniz Oluşturuldu.', [
       'position' => 'top-end',

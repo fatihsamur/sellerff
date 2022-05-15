@@ -15,11 +15,10 @@ use LaravelDaily\Invoices\Invoice;
 use LaravelDaily\Invoices\Classes\Party;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\MissingFields;
-use App\Mail\MissingBoxLabel;
-use App\Mail\OrderProcessing;
-use App\Mail\OrderCompleted;
+use App\Jobs\SendOrderProcessing;
+use App\Jobs\SendOrderCompleted;
+use App\Jobs\SendMissingFields;
+use App\Jobs\SendMissingBoxLabel;
 
 class StatusChange extends Component
 {
@@ -65,7 +64,7 @@ class StatusChange extends Component
 
         if ($this->status == 'Koli Etiketi Bekliyor') {
             if (app()->environment('production')) {
-                Mail::to($user->email)->send(new MissingBoxLabel(['order_number' => $order->id ,'user' => $user->name]));
+                SendMissingBoxLabel::dispatch($user->email, $order->id, $user->name);
                 $order->missing_box_label_sent = true;
                 $order->update();
             }
@@ -180,7 +179,7 @@ class StatusChange extends Component
 
         if ($order->status == 'Eksik Bilgileri Tamamlayın') {
             if (app()->environment('production')) {
-                Mail::to($user->email)->send(new MissingFields(['order_number' => $order->id ,'user' => $user->name]));
+                SendMissingFields::dispatch($user->email, $order->id, $user->name);
                 $order->missing_field_sent = true;
                 $order->update();
             }
@@ -188,12 +187,12 @@ class StatusChange extends Component
 
         if ($order->status == 'Depoda İşleniyor') {
             if (app()->environment('production')) {
-                Mail::to($user->email)->send(new OrderProcessing(['order_number' => $order->id]));
+                SendOrderProcessing::dispatch($user->email, $order->id);
             }
         }
         if ($order->status == 'Tamamlandı') {
             if (app()->environment('production')) {
-                Mail::to($user->email)->send(new OrderCompleted(['order_number' => $order->id ,'user' => $user->name]));
+                SendOrderCompleted::dispatch($user->email, $order->id, $user->name);
             }
         }
 
